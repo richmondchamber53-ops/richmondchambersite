@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events | Richmond Area Chamber of Commerce</title>
+    <style>
+        /* Modern Reset & Corporate Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #1A1A1A; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo img {
+            height: 85px; 
+            width: auto;  
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #D22B2B; 
+        }
+
+        /* Page Banner */
+        .page-title-section {
+            background-color: #1A1A1A;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-title-section p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        /* Events Layout */
+        .events-wrapper {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .event-card {
+            display: flex;
+            background: #ffffff;
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        /* Date Block (Left Side) */
+        .event-date-block {
+            background-color: #D22B2B;
+            color: white;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .event-month {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event-day {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0.5rem 0;
+        }
+
+        .event-year {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Details Block (Right Side) */
+        .event-details {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .event-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .event-action a {
+            display: inline-block;
+            background-color: #1A1A1A;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .event-action a:hover {
+            background-color: #D22B2B;
+        }
+
+        /* CTA Section */
+        .submit-event-cta {
+            text-align: center;
+            background-color: #fff;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .submit-event-cta h3 {
+            font-size: 1.5rem;
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+        }
+        
+        .submit-event-cta a {
+            color: #D22B2B;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #1A1A1A; 
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            .logo img {
+                height: 65px; 
+                margin-bottom: 1rem;
+            }
+            nav ul {
+                margin-top: 0.5rem;
+            }
+            .event-card {
+                flex-direction: column;
+            }
+            .event-date-block {
+                min-width: auto;
+                padding: 1.5rem;
+                flex-direction: row;
+                gap: 1rem;
+                align-items: baseline;
+            }
+            .event-day {
+                font-size: 2rem;
+                margin: 0;
+            }
+            .event-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Business Directory</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title Banner -->
+    <section class="page-title-section">
+        <h1>Community Events</h1>
+        <p>Connect, network, and grow at our upcoming local gatherings.</p>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="events-wrapper">
+
+        <!-- Event Item 1 -->
+        <article class="event-card">
+            <div class="event-date-block">
+                <span class="event-month">Aug</span>
+                <span class="event-day">14</span>
+                <span class="event-year">2026</span>
+            </div>
+            <div class="event-details">
+                <h2 class="event-title">Monthly Chamber Luncheon</h2>
+                <div class="event-meta">
+                    <span>🕒 11:30 AM - 1:00 PM</span>
+                    <span>📍 Ray County Senior Center</span>
+                </div>
+                <p class="event-description">Join us for our monthly networking luncheon! Enjoy a fantastic catered meal while connecting with fellow business owners. This month features a special presentation on local economic development initiatives.</p>
+                <div class="event-action">
+                    <a href="#">RSVP Here</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Event Item 2 -->
+        <article class="event-card">
+            <div class="event-date-block">
+                <span class="event-month">Sep</span>
+                <span class="event-day">03</span>
+                <span class="event-year">2026</span>
+            </div>
+            <div class="event-details">
+                <h2 class="event-title">Business After Hours Mixer</h2>
+                <div class="event-meta">
+                    <span>🕒 5:00 PM - 7:00 PM</span>
+                    <span>📍 Madison's Cafe</span>
+                </div>
+                <p class="event-description">Wind down your workday with the Richmond Chamber. Drinks and light appetizers will be provided. A perfect, low-pressure environment to exchange business cards and make valuable community connections.</p>
+                <div class="event-action">
+                    <a href="#">More Details</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Event Item 3 -->
+        <article class="event-card">
+            <div class="event-date-block">
+                <span class="event-month">Oct</span>
+                <span class="event-day">10</span>
+                <span class="event-year">2026</span>
+            </div>
+            <div class="event-details">
+                <h2 class="event-title">Annual Fall Ribbon Cutting</h2>
+                <div class="event-meta">
+                    <span>🕒 10:00 AM</span>
+                    <span>📍 Downtown Square</span>
+                </div>
+                <p class="event-description">Help us celebrate the grand opening of our newest Chamber Member on the square. There will be photo opportunities, a brief speech from the mayor, and refreshments.</p>
+                <div class="event-action">
+                    <a href="#">View Location</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Submit an Event CTA -->
+        <section class="submit-event-cta">
+            <h3>Hosting a Community Event?</h3>
+            <p>Chamber members can list their public events on our community calendar for free. <br>
+            <a href="mailto:activitydirector@richmondchamber.org">Email the Activity Director</a> with your event details to get it featured!</p>
+        </section>
+
+    </main>
+
+    <!-- Page Footer -->
+    <footer>
+        <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #777;">Powered by GitHub Pages</p>
+    </footer>
+
+</body>
+</html>
