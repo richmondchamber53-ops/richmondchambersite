@@ -84,132 +84,153 @@
             padding: 0 2rem;
         }
 
-        /* Benefits Feature Section */
-        .benefits-section {
-            text-align: center;
+        /* Welcome Text Layout */
+        .welcome-box {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 5px solid #D22B2B;
+            margin-bottom: 3.5rem;
+        }
+
+        .welcome-box h2 {
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-box p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Benefits Section Split */
+        .benefits-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             margin-bottom: 4rem;
         }
 
-        .benefits-section h2 {
-            font-size: 2rem;
+        .benefits-block h3 {
             color: #1A1A1A;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e2e2;
+            padding-bottom: 0.5rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
             position: relative;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .benefit-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border-top: 4px solid #D22B2B;
-            text-align: left;
-        }
-
-        .benefit-card h3 {
-            color: #1A1A1A;
+            padding-left: 1.5rem;
             margin-bottom: 0.75rem;
-            font-size: 1.25rem;
+            font-size: 0.95rem;
         }
 
-        /* Membership Tier Pricing Cards */
-        .tiers-section {
+        .benefits-list li::before {
+            content: "•";
+            color: #D22B2B;
+            font-weight: bold;
+            font-size: 1.4rem;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+
+        /* Membership Dues Tiers Grid */
+        .dues-section {
             margin-bottom: 5rem;
         }
 
-        .tiers-section h2 {
+        .dues-section h2 {
             text-align: center;
             font-size: 2rem;
             color: #1A1A1A;
             margin-bottom: 2.5rem;
         }
 
-        .tiers-grid {
+        .dues-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
+            margin-bottom: 2rem;
         }
 
-        .tier-card {
+        .due-card {
             background: #fff;
             border: 1px solid #e2e2e2;
-            border-radius: 8px;
-            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            padding: 2rem 1.5rem;
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
         }
 
-        .tier-card.featured {
-            border: 2px solid #D22B2B;
-            transform: scale(1.03);
+        .due-card:hover {
+            transform: translateY(-3px);
+            border-color: #D22B2B;
         }
 
-        .featured-tag {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #D22B2B;
-            color: #fff;
-            padding: 0.25rem 1rem;
-            font-size: 0.8rem;
+        .due-name {
             font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        .tier-name {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.15rem;
             color: #1A1A1A;
+            margin-bottom: 0.5rem;
+        }
+
+        .due-price {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #D22B2B;
             margin-bottom: 1rem;
         }
 
-        .tier-price {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: #D22B2B;
-            margin-bottom: 1.5rem;
-        }
-
-        .tier-price span {
-            font-size: 1rem;
+        .due-price span {
+            font-size: 0.9rem;
             color: #666;
             font-weight: normal;
         }
 
-        .tier-features {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 2rem;
-        }
-
-        .tier-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.95rem;
-        }
-
-        .tier-features li::before {
-            content: "✓ ";
-            color: #D22B2B;
+        .select-tier-btn {
+            background-color: #1A1A1A;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            margin-right: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
         }
 
-        /* Dynamic Application Form Panel */
+        .select-tier-btn:hover {
+            background-color: #D22B2B;
+        }
+
+        .dues-footnotes {
+            background-color: #f1f1f1;
+            padding: 1.5rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .dues-footnotes p {
+            margin-bottom: 0.5rem;
+        }
+
+        .dues-footnotes p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Application Form Panel */
         .form-section {
             background: #ffffff;
             border-radius: 8px;
@@ -301,12 +322,6 @@
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 1024px) {
-            .tier-card.featured {
-                transform: none;
-            }
-        }
-
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -319,6 +334,10 @@
             }
             nav ul {
                 margin-top: 0.5rem;
+            }
+            .benefits-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             .form-grid {
                 grid-template-columns: 1fr;
@@ -354,138 +373,175 @@
 
     <!-- Page Title Banner -->
     <section class="page-title-section">
-        <h1>Chamber Membership</h1>
-        <p>Invest in your enterprise, build professional networks, and elevate Ray County together.</p>
+        <h1>Membership Information</h1>
+        <p>Invest in the future of our business community and elevate Ray County together.</p>
     </section>
 
     <!-- Main Content Container -->
     <div class="join-wrapper">
 
-        <!-- Section 1: Membership Benefits -->
-        <section class="benefits-section">
-            <h2>Why Join the Richmond Chamber?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <h3>Credibility & Visibility</h3>
-                    <p>Gain validation and instant visibility with a permanent profile listing in our public business directory, linking customers straight to you.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Networking & Synergy</h3>
-                    <p>Build lasting relationships at regular Chamber luncheons, coffee mornings, and local networking events designed to exchange quality leads.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Advocacy & Support</h3>
-                    <p>Have your voice heard at civic levels. We work closely with local municipal leaders to maintain a robust, pro-business climate across Richmond.</p>
-                </div>
-            </div>
+        <!-- Welcome Text / Intro Block -->
+        <section class="welcome-box">
+            <h2>Welcome to the Richmond Area Chamber of Commerce</h2>
+            <p>We are happy to help provide any answers to questions you may have regarding membership that you don’t get answered from the content below. Please contact us at <strong>816-776-6916</strong> or drop us a line here by using our application form below.</p>
+            <p>When you become a chamber member you invest in the future of the business community and ensure that the Chamber keeps working towards its mission. The Richmond Chamber works for every individual, business, and profession in the community.</p>
         </section>
 
-        <!-- Section 2: Membership Investment Tiers -->
-        <section class="tiers-section">
-            <h2>Select Your Investment Level</h2>
-            <div class="tiers-grid">
+        <!-- Benefits Lists Grid Split -->
+        <section class="benefits-container">
+            <div class="benefits-block">
+                <h3>Benefits of Joining Our Chamber</h3>
+                <ul class="benefits-list">
+                    <li>Listing in the Chamber Directory</li>
+                    <li>Free Business Referrals</li>
+                    <li>Ribbon Cutting Ceremonies</li>
+                    <li>Business Before & After Hours and Luncheon Opportunities</li>
+                    <li>Networking and Community Involvement</li>
+                    <li>Promotional Materials and Business Card displayed in the Chamber’s office</li>
+                    <li>Free Promotional posting on the Chamber’s social media platforms</li>
+                    <li>Free use of Chamber Board Room and Resources</li>
+                    <li>Business Appreciation Events</li>
+                    <li>Access to Missouri State chamber Benefits</li>
+                </ul>
+            </div>
+
+            <div class="benefits-block">
+                <h3>Additional Benefits for Elite Levels</h3>
                 
-                <!-- Bronze Level -->
-                <div class="tier-card">
-                    <div>
-                        <div class="tier-name">Bronze Partner</div>
-                        <div class="tier-price">$150 <span>/ year</span></div>
-                        <ul class="tier-features">
-                            <li>Standard Profile Directory Listing</li>
-                            <li>Access to Chamber Events & Mixers</li>
-                            <li>Ribbon Cutting Celebration Support</li>
-                            <li>Chamber Window Decal & Branding Kit</li>
-                        </ul>
-                    </div>
-                    <a href="#apply-form" class="submit-btn" style="text-decoration:none; text-align:center;">Select Bronze</a>
-                </div>
+                <h4 style="color:#D22B2B; font-weight:bold; margin-bottom:0.25rem;">Bronze</h4>
+                <ul class="benefits-list" style="margin-bottom: 1.5rem;">
+                    <li>Highlighted in the member directory</li>
+                    <li>Business name promoted on the monthly video spotlight</li>
+                </ul>
 
-                <!-- Gold Level (Featured) -->
-                <div class="tier-card featured">
-                    <div class="featured-tag">Most Value</div>
-                    <div>
-                        <div class="tier-name">Gold Corporate Sponsor</div>
-                        <div class="tier-price">$500 <span>/ year</span></div>
-                        <ul class="tier-features">
-                            <li>Premium Permanent Sidebar Logo Spot</li>
-                            <li>Enhanced Interactive Directory Listing</li>
-                            <li>2 Complimentary Luncheon Passes Yearly</li>
-                            <li>Priority Event Hosting Opportunities</li>
-                            <li>Social Media Spotlight Features</li>
-                        </ul>
-                    </div>
-                    <a href="#apply-form" class="submit-btn" style="text-decoration:none; text-align:center; background-color:#D22B2B;">Select Gold</a>
-                </div>
-
-                <!-- Silver Level -->
-                <div class="tier-card">
-                    <div>
-                        <div class="tier-name">Silver Executive</div>
-                        <div class="tier-price">$300 <span>/ year</span></div>
-                        <ul class="tier-features">
-                            <li>Highlighted Directory Listing Placement</li>
-                            <li>Logo displayed on Sidebar Tiers</li>
-                            <li>1 Complimentary Luncheon Pass Yearly</li>
-                            <li>Event Sponsorship Discounts</li>
-                        </ul>
-                    </div>
-                    <a href="#apply-form" class="submit-btn" style="text-decoration:none; text-align:center;">Select Silver</a>
-                </div>
-
+                <h4 style="color:#D22B2B; font-weight:bold; margin-bottom:0.25rem;">Silver</h4>
+                <ul class="benefits-list">
+                    <li>Highlighted in the member directory</li>
+                    <li>Recognition on printed materials through Chamber</li>
+                    <li>Video Spotlights along with monthly acknowledgements on spotlights</li>
+                    <li>Member highlights on the Chamber website</li>
+                    <li>Member mention at all Chamber events</li>
+                </ul>
             </div>
         </section>
 
-        <!-- Section 3: Interactive Application Form -->
+        <!-- Membership Investment Dues Section -->
+        <section class="dues-section">
+            <h2>Membership Dues Structure</h2>
+            <div class="dues-grid">
+                
+                <!-- Tier 1 -->
+                <div class="due-card">
+                    <div>
+                        <div class="due-name">Individual / Non-Profit</div>
+                        <div class="due-price">$75 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="due-card">
+                    <div>
+                        <div class="due-name">Regular Membership</div>
+                        <div class="due-price">$250 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="due-card" style="border-top: 3px solid #D22B2B;">
+                    <div>
+                        <div class="due-name">Bronze Elite</div>
+                        <div class="due-price">$500 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 4 -->
+                <div class="due-card" style="border-top: 3px solid #D22B2B;">
+                    <div>
+                        <div class="due-name">Silver Elite</div>
+                        <div class="due-price">$750 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 5 -->
+                <div class="due-card" style="border-top: 3px solid #D22B2B; background: #fafafa;">
+                    <div>
+                        <div class="due-name">Gold Elite</div>
+                        <div class="due-price">$1,000 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn" style="background:#D22B2B;">Select Level</a>
+                </div>
+
+            </div>
+
+            <!-- Footnotes and Voting Rights -->
+            <div class="dues-footnotes">
+                <p><strong>* Individual/Non-Profit:</strong> Members are allocated 1/2 (half) vote during the Chamber Board Elections and are not permitted to have representation on the Richmond Chamber Board of Directors.</p>
+                <p style="margin-top: 0.5rem;"><strong>** Regular/Elite:</strong> Members are allocated 1 (one) full vote during the Chamber Board Elections and are permitted to have representation on the Richmond Board of Directors.</p>
+            </div>
+        </section>
+
+        <!-- Interactive Form Routing directly to your administrators -->
         <section class="form-section" id="apply-form">
             <h2>Membership Application</h2>
-            <p>Fill out the application profile below and a Chamber representative will reach out shortly to finalize your integration.</p>
+            <p>Complete the profile fields below. Form responses are routed automatically to Chamber leadership to begin integration process.</p>
             
-            <form action="#" method="POST">
+            <form action="https://formsubmit.co/director@richmondchamber.org" method="POST">
+                
+                <!-- Carbon-Copy the Activity Director automatically via backend routing -->
+                <input type="hidden" name="_cc" value="activitydirector@richmondchamber.org">
+                <input type="hidden" name="_subject" value="New Chamber Membership Application Form">
+                <input type="hidden" name="_captcha" value="false">
+
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="biz-name">Business / Organization Name *</label>
-                        <input type="text" id="biz-name" name="biz-name" required placeholder="As you want it listed">
+                        <input type="text" id="biz-name" name="Business Name" required placeholder="As you want it listed">
                     </div>
                     
                     <div class="form-group">
                         <label for="contact-person">Primary Contact Person *</label>
-                        <input type="text" id="contact-person" name="contact-person" required placeholder="First and Last name">
+                        <input type="text" id="contact-person" name="Contact Person" required placeholder="First and Last name">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="name@company.com">
+                        <input type="email" id="email" name="Email Address" required placeholder="name@company.com">
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(816) 555-0123">
+                        <input type="tel" id="phone" name="Phone Number" required placeholder="(816) 555-0123">
                     </div>
 
                     <div class="form-group full-width">
                         <label for="address">Physical Business Address *</label>
-                        <input type="text" id="address" name="address" required placeholder="123 Main St, Richmond, MO 64085">
+                        <input type="text" id="address" name="Physical Address" required placeholder="123 Main St, Richmond, MO 64085">
                     </div>
 
                     <div class="form-group">
-                        <label for="tier-select">Desired Membership Tier *</label>
-                        <select id="tier-select" name="tier-select" required>
-                            <option value="" disabled selected>-- Select a Tier --</option>
-                            <option value="gold">Gold Corporate Sponsor ($500/yr)</option>
-                            <option value="silver">Silver Executive ($300/yr)</option>
-                            <option value="bronze">Bronze Partner ($150/yr)</option>
-                            <option value="individual">Non-Profit / Individual Partner</option>
+                        <label for="tier-select">Select Membership Level *</label>
+                        <select id="tier-select" name="Selected Membership Level" required>
+                            <option value="" disabled selected>-- Select an Investment Level --</option>
+                            <option value="Individual/Non-Profit">$75 - Individual / Associate / Non-Profit</option>
+                            <option value="Regular Membership">$250 - Regular Membership</option>
+                            <option value="Bronze Membership">$500 - Bronze Elite Level</option>
+                            <option value="Silver Membership">$750 - Silver Elite Level</option>
+                            <option value="Gold Membership">$1,000 - Gold Elite Level</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="website">Website or Facebook Page URL</label>
-                        <input type="text" id="website" name="website" placeholder="https://...">
+                        <input type="text" id="website" name="Website URL" placeholder="https://...">
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="description">Short Business Description (For the Directory)</label>
-                        <textarea id="description" name="description" rows="4" placeholder="Tell us a bit about what services or products your enterprise offers..."></textarea>
+                        <label for="description">Short Business Profile Summary</label>
+                        <textarea id="description" name="Business Summary" rows="4" placeholder="Briefly introduce your enterprise offerings or operational focus..."></textarea>
                     </div>
                 </div>
 
