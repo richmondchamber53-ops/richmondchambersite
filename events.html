@@ -82,127 +82,84 @@
             font-size: 1.1rem;
         }
 
-        /* Events Layout */
+        /* Responsive Main Layout Container */
         .events-wrapper {
-            max-width: 1000px;
-            margin: 4rem auto;
+            max-width: 1200px;
+            margin: 3rem auto;
             padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 2rem;
         }
 
-        .event-card {
-            display: flex;
+        /* Google Calendar Responsive Frame Wrapper */
+        .calendar-container {
             background: #ffffff;
             border: 1px solid #e2e2e2;
             border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+            min-height: 650px;
         }
 
-        .event-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        .calendar-container iframe {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: calc(100% - 3rem);
+            height: calc(100% - 3rem);
+            border: 0;
         }
 
-        /* Date Block (Left Side) */
-        .event-date-block {
-            background-color: #D22B2B;
-            color: white;
-            padding: 2rem 1.5rem;
+        /* Sidebar Panels Layout */
+        .events-sidebar {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-width: 140px;
-            text-align: center;
-        }
-
-        .event-month {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .event-day {
-            font-size: 3rem;
-            font-weight: 900;
-            line-height: 1;
-            margin: 0.5rem 0;
-        }
-
-        .event-year {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Details Block (Right Side) */
-        .event-details {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .event-title {
-            font-size: 1.5rem;
-            color: #1A1A1A;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-meta {
-            display: flex;
             gap: 1.5rem;
-            margin-bottom: 1rem;
+        }
+
+        .sidebar-card {
+            background-color: #fff;
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .sidebar-card.cta-card {
+            border-top: 4px solid #D22B2B;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.25rem;
+            color: #1A1A1A;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-card p {
             font-size: 0.9rem;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .event-description {
-            margin-bottom: 1.5rem;
             color: #555;
-            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
         }
-
-        .event-action a {
+        
+        .sidebar-card a {
             display: inline-block;
             background-color: #1A1A1A;
             color: white;
             text-decoration: none;
             padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
             border-radius: 4px;
             transition: background-color 0.2s;
-        }
-
-        .event-action a:hover {
-            background-color: #D22B2B;
-        }
-
-        /* CTA Section */
-        .submit-event-cta {
             text-align: center;
-            background-color: #fff;
-            border: 2px dashed #ccc;
-            border-radius: 8px;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            width: 100%;
         }
 
-        .submit-event-cta h3 {
-            font-size: 1.5rem;
-            color: #1A1A1A;
-            margin-bottom: 1rem;
-        }
-        
-        .submit-event-cta a {
-            color: #D22B2B;
-            font-weight: bold;
-            text-decoration: none;
+        .sidebar-card a:hover {
+            background-color: #D22B2B;
         }
 
         /* Footer styling */
@@ -216,6 +173,15 @@
         }
 
         /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .events-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .calendar-container {
+                min-height: 500px;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -229,23 +195,15 @@
             nav ul {
                 margin-top: 0.5rem;
             }
-            .event-card {
-                flex-direction: column;
+            .calendar-container {
+                min-height: 450px;
+                padding: 0.5rem;
             }
-            .event-date-block {
-                min-width: auto;
-                padding: 1.5rem;
-                flex-direction: row;
-                gap: 1rem;
-                align-items: baseline;
-            }
-            .event-day {
-                font-size: 2rem;
-                margin: 0;
-            }
-            .event-meta {
-                flex-direction: column;
-                gap: 0.5rem;
+            .calendar-container iframe {
+                top: 0.5rem;
+                left: 0.5rem;
+                width: calc(100% - 1rem);
+                height: calc(100% - 1rem);
             }
         }
     </style>
@@ -272,78 +230,35 @@
 
     <!-- Page Title Banner -->
     <section class="page-title-section">
-        <h1>Community Events</h1>
-        <p>Connect, network, and grow at our upcoming local gatherings.</p>
+        <h1>Chamber Calendar & Events</h1>
+        <p>Stay up to date with community meetings, networking mixers, and festivals.</p>
     </section>
 
-    <!-- Main Content Container -->
+    <!-- Main Content Container Split -->
     <main class="events-wrapper">
 
-        <!-- Event Item 1 -->
-        <article class="event-card">
-            <div class="event-date-block">
-                <span class="event-month">Aug</span>
-                <span class="event-day">14</span>
-                <span class="event-year">2026</span>
-            </div>
-            <div class="event-details">
-                <h2 class="event-title">Monthly Chamber Luncheon</h2>
-                <div class="event-meta">
-                    <span>🕒 11:30 AM - 1:00 PM</span>
-                    <span>📍 Ray County Senior Center</span>
-                </div>
-                <p class="event-description">Join us for our monthly networking luncheon! Enjoy a fantastic catered meal while connecting with fellow business owners. This month features a special presentation on local economic development initiatives.</p>
-                <div class="event-action">
-                    <a href="#">RSVP Here</a>
-                </div>
-            </div>
-        </article>
+        <!-- Left Side: Live Embedded Google Calendar -->
+        <section class="calendar-container">
+            <iframe src="https://calendar.google.com/calendar/embed?src=richmondchamber53%40gmail.com&ctz=America%2FChicago&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0"></iframe>
+        </section>
 
-        <!-- Event Item 2 -->
-        <article class="event-card">
-            <div class="event-date-block">
-                <span class="event-month">Sep</span>
-                <span class="event-day">03</span>
-                <span class="event-year">2026</span>
+        <!-- Right Side: Sidebar Panels -->
+        <section class="events-sidebar">
+            
+            <!-- Submit an Event Card -->
+            <div class="sidebar-card cta-card">
+                <h3>Hosting an Event?</h3>
+                <p>Chamber members are welcome to list public events, promotions, and organizational assemblies on our calendar for free alignment.</p>
+                <a href="mailto:activitydirector@richmondchamber.org">Email Activity Director</a>
             </div>
-            <div class="event-details">
-                <h2 class="event-title">Business After Hours Mixer</h2>
-                <div class="event-meta">
-                    <span>🕒 5:00 PM - 7:00 PM</span>
-                    <span>📍 Madison's Cafe</span>
-                </div>
-                <p class="event-description">Wind down your workday with the Richmond Chamber. Drinks and light appetizers will be provided. A perfect, low-pressure environment to exchange business cards and make valuable community connections.</p>
-                <div class="event-action">
-                    <a href="#">More Details</a>
-                </div>
-            </div>
-        </article>
 
-        <!-- Event Item 3 -->
-        <article class="event-card">
-            <div class="event-date-block">
-                <span class="event-month">Oct</span>
-                <span class="event-day">10</span>
-                <span class="event-year">2026</span>
+            <!-- General Contact Box -->
+            <div class="sidebar-card">
+                <h3>Questions?</h3>
+                <p>Need details regarding an upcoming monthly luncheon location or planning committees?</p>
+                <a href="tel:8167766916" style="background:#f1f1f1; color:#1A1A1A; border:1px solid #ccc;">Call 816-776-6916</a>
             </div>
-            <div class="event-details">
-                <h2 class="event-title">Annual Fall Ribbon Cutting</h2>
-                <div class="event-meta">
-                    <span>🕒 10:00 AM</span>
-                    <span>📍 Downtown Square</span>
-                </div>
-                <p class="event-description">Help us celebrate the grand opening of our newest Chamber Member on the square. There will be photo opportunities, a brief speech from the mayor, and refreshments.</p>
-                <div class="event-action">
-                    <a href="#">View Location</a>
-                </div>
-            </div>
-        </article>
 
-        <!-- Submit an Event CTA -->
-        <section class="submit-event-cta">
-            <h3>Hosting a Community Event?</h3>
-            <p>Chamber members can list their public events on our community calendar for free. <br>
-            <a href="mailto:activitydirector@richmondchamber.org">Email the Activity Director</a> with your event details to get it featured!</p>
         </section>
 
     </main>
