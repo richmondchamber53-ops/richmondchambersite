@@ -16,14 +16,14 @@
         body {
             color: #333;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            background-color: #f4f6f9;
         }
 
         /* Header & Navigation Links */
         header {
             background-color: #ffffff;
-            border-bottom: 3px solid #1A1A1A; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-bottom: 4px solid #D22B2B; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -50,45 +50,54 @@
         }
 
         nav ul li {
-            margin-left: 1.5rem;
+            margin-left: 1.75rem;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: #555;
+            color: #444;
             font-weight: 600;
+            font-size: 1.05rem;
             transition: color 0.3s;
+            padding: 0.5rem 0;
         }
 
         nav ul li a:hover, nav ul li a.active {
             color: #D22B2B; 
         }
 
-        /* Hero Splash Section */
+        /* Enhanced Hero Splash Section with Richmond Landmark Background */
         .hero-section {
-            background-color: #1A1A1A;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
+                        url('https://upload.wikimedia.org/wikipedia/commons/6/6f/RAY_COUNTY_COURTHOUSE.jpg') no-repeat center center/cover;
             color: white;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
+            box-shadow: inset 0 -5px 15px rgba(0,0,0,0.3);
         }
 
         .hero-section h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .hero-section p {
-            color: #ccc;
-            font-size: 1.25rem;
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
+            color: #f0f0f0;
+            font-size: 1.35rem;
+            max-width: 850px;
+            margin: 0 auto 3rem auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
 
         /* Unified Button Styling with Flex Alignment */
         .hero-btn-container {
             display: flex;
             justify-content: center;
-            gap: 1.25rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
@@ -96,10 +105,17 @@
             display: inline-block;
             color: white;
             text-decoration: none;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2.25rem;
             font-weight: bold;
-            border-radius: 4px;
-            transition: background-color 0.2s, transform 0.1s;
+            font-size: 1.05rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
 
         .primary-btn {
@@ -125,148 +141,150 @@
             padding: 0 2rem;
         }
 
-        /* Welcome & Staff Section Split */
-        .welcome-grid {
-            display: grid;
-            grid-template-columns: 1.25fr 1fr;
-            gap: 4rem;
-            align-items: start;
+        /* Premium Card Layout for Welcome Block */
+        .welcome-block {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 3.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             margin-bottom: 5rem;
+            border-left: 6px solid #D22B2B;
         }
 
-        .welcome-text h2 {
-            font-size: 2rem;
+        .welcome-block h2 {
+            font-size: 2.25rem;
             color: #1A1A1A;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
         }
 
-        .welcome-text p {
+        .welcome-block p {
             margin-bottom: 1.5rem;
             color: #555;
+            font-size: 1.15rem;
+            line-height: 1.7;
         }
-
-        .director-card {
-            background-color: #fff;
-            border: 1px solid #e2e2e2;
-            border-radius: 8px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            border-top: 4px solid #D22B2B;
-        }
-
-        .director-card h3 {
-            font-size: 1.5rem;
-            color: #1A1A1A;
-            margin-bottom: 0.25rem;
-        }
-
-        .director-title {
-            color: #D22B2B;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            text-transform: uppercase;
+        
+        .welcome-block p:last-child {
+            margin-bottom: 0;
         }
 
         /* Gold Corporate Sponsors Section Layout */
         .sponsors-section {
             background-color: #ffffff;
-            border: 1px solid #e2e2e2;
-            border-radius: 8px;
-            padding: 3rem 2rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            border-radius: 12px;
+            padding: 4rem 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             text-align: center;
         }
 
         .sponsors-section h2 {
-            font-size: 1.75rem;
+            font-size: 2rem;
             color: #1A1A1A;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .sponsors-section h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #ecd16d;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .sponsors-subtitle {
             color: #666;
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            margin-top: 0.75rem;
+            margin-bottom: 3rem;
         }
 
         /* Expanded 20 Spot Sponsor Grid Structure */
         .sponsors-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            gap: 1.75rem;
         }
 
         .sponsor-card {
-            background: #fdfdfd;
+            background: #ffffff;
             border: 2px solid #ecd16d; /* Classic Gold Tint Borders */
-            border-radius: 6px;
-            padding: 1.5rem 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+            border-radius: 8px;
+            padding: 1.75rem 1rem;
+            box-shadow: 0 2px 8px rgba(236, 209, 109, 0.08);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 160px;
-            transition: transform 0.2s;
+            min-height: 170px;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
 
         .sponsor-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(210,43,43,0.05);
+            transform: translateY(-4px);
+            border-color: #bfa12a;
+            box-shadow: 0 8px 16px rgba(191, 161, 42, 0.15);
         }
 
         /* Image Display Handling within Gold Layout Boxes */
         .sponsor-logo-box {
             width: 100%;
-            height: 65px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.85rem;
         }
 
         .sponsor-logo-box img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            /* grayscale profile for placeholder image cohesion */
-            filter: grayscale(20%); 
         }
 
         .sponsor-card h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #1A1A1A;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.3;
             text-align: center;
         }
 
         .sponsor-tag {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 800;
             color: #bfa12a;
             text-transform: uppercase;
-            margin-top: 0.35rem;
-            letter-spacing: 0.5px;
+            margin-top: 0.45rem;
+            letter-spacing: 0.75px;
         }
 
         /* Footer styling */
         footer {
             background-color: #1A1A1A; 
-            color: #ccc;
+            color: #d1d1d1;
             text-align: center;
-            padding: 2.5rem 2rem;
-            margin-top: 5rem;
-            font-size: 0.9rem;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            font-size: 0.95rem;
+            border-top: 4px solid #D22B2B;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
         }
 
         footer a {
             color: white;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.2s;
         }
 
         footer a:hover {
@@ -274,28 +292,27 @@
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 992px) {
-            .welcome-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-        }
-
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
                 text-align: center;
-                padding: 1rem;
+                padding: 1.25rem 1rem;
             }
             .logo img {
-                height: 65px; 
-                margin-bottom: 1rem;
+                height: 70px; 
+                margin-bottom: 1.25rem;
             }
-            nav ul {
-                margin-top: 0.5rem;
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+            .hero-section {
+                padding: 6rem 1rem;
             }
             .hero-section h1 {
-                font-size: 2.25rem;
+                font-size: 2.5rem;
+            }
+            .hero-section p {
+                font-size: 1.15rem;
             }
             .hero-btn-container {
                 flex-direction: column;
@@ -303,6 +320,9 @@
             }
             .hero-btn {
                 width: 100%;
+            }
+            .welcome-block {
+                padding: 2rem;
             }
         }
     </style>
@@ -327,7 +347,7 @@
         </div>
     </header>
 
-    <!-- Hero Splash Box with Side-By-Side Button Triggers -->
+    <!-- Hero Splash Box with Side-By-Side Button Triggers & Landmark Image Graphic -->
     <section class="hero-section">
         <h1>Growing Richmond Business Together</h1>
         <p>Supporting commerce, community enrichment, and local partnerships throughout Richmond, Missouri, and the Ray County area.</p>
@@ -341,22 +361,11 @@
     <!-- Main Content Container Wrapper -->
     <main class="main-container">
 
-        <!-- Upper Section: Welcome Split -->
-        <div class="welcome-grid">
-            <div class="welcome-text">
-                <h2>Welcome to the Chamber</h2>
-                <p>The Richmond Area Chamber of Commerce is dedicated to helping our local industries and Main Street retailers thrive. We facilitate valuable professional networking events, coordinate business advocacy resources, and promote our regional tourism footprint.</p>
-                <p>Explore our community business listings, look at upcoming events on our integrated calendar, or evaluate our membership levels to see how partnering with the Chamber can support your organization's goals.</p>
-            </div>
-
-            <!-- Leadership Bio Display Box -->
-            <div class="director-card">
-                <h3>Jayne Taylor</h3>
-                <div class="director-title">Executive Director</div>
-                <p style="color: #555; margin-bottom: 1.5rem; font-style: italic;">"Welcome to our regional commercial network! We look forward to providing your enterprise with visibility platforms, civic alignments, and collaborative support structures to fuel long-term expansion."</p>
-                <p><strong>Office Phone:</strong> <a href="tel:8167766916" style="color: #1A1A1A; text-decoration: none; font-weight: 600;">816-776-6916</a></p>
-                <p><strong>Email Address:</strong> <a href="mailto:jtaylor@richmondchamber.org" style="color: #D22B2B; text-decoration: none; font-weight: 600;">jtaylor@richmondchamber.org</a></p>
-            </div>
+        <!-- Upper Section: Welcome Message Premium Card Layout -->
+        <div class="welcome-block">
+            <h2>Welcome to the Chamber</h2>
+            <p>The Richmond Area Chamber of Commerce is dedicated to helping our local industries and Main Street retailers thrive. We facilitate valuable professional networking events, coordinate business advocacy resources, and promote our regional tourism footprint.</p>
+            <p>Explore our community business listings, look at upcoming events on our integrated calendar, or evaluate our membership levels to see how partnering with the Chamber can support your organization's goals.</p>
         </div>
 
         <!-- Lower Section: Complete 20 Spot Corporate Gold Sponsors Roster -->
@@ -514,7 +523,7 @@
     <!-- Page Footer Links -->
     <footer>
         <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="https://www.facebook.com/richmondmissourichamberofcommerce" target="_blank">Connect with us on Facebook</a></p>
+        <p><a href="https://www.facebook.com/richmondmissourichamberofcommerce" target="_blank">Connect with us on Facebook</a></p>
     </footer>
 
 </body>
