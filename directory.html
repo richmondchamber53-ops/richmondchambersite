@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Directory | Richmond Area Chamber of Commerce</title>
+    <style>
+        /* Modern Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #1A1A1A; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo img {
+            height: 85px; 
+            width: auto;  
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #D22B2B; 
+        }
+
+        /* Page Banner */
+        .page-title-section {
+            background-color: #1A1A1A;
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .page-title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Main Core Layout: Content & Sidebar Split */
+        .main-layout-wrapper {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr; /* 75% Directory Content, 25% Sponsor Sidebar */
+            gap: 2rem;
+        }
+
+        /* Left Side: Directory Layout */
+        .directory-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .alphabet-header {
+            background-color: #1A1A1A;
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .business-row-card {
+            background: #fff;
+            padding: 1.25rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            border-left: 4px solid #D22B2B;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .biz-main-info h3 {
+            color: #1A1A1A;
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .biz-details-text {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .biz-meta {
+            color: #777;
+            font-style: italic;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+        }
+
+        .biz-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-link {
+            text-decoration: none;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .action-link:hover {
+            background-color: #D22B2B;
+            color: #fff;
+        }
+
+        /* Right Side: Sponsor Sidebar Panel */
+        .sponsor-sidebar-panel {
+            background-color: #fff;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            padding: 1.5rem;
+            align-self: start;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .sidebar-tier-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 0.4rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-gold { background-color: #fff4d4; color: #8a6d0f; border: 1px solid #e6cb62; }
+        .tier-silver { background-color: #f1f2f5; color: #5f6368; border: 1px solid #bcc1c6; }
+        .tier-bronze { background-color: #fbeee6; color: #a0522d; border: 1px solid #e5aa7a; }
+
+        .sidebar-sponsor-block {
+            display: block;
+            background: #fafafa;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            padding: 0.75rem;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .sidebar-sponsor-block:hover {
+            border-color: #D22B2B;
+            background-color: #fff8f8;
+            color: #D22B2B;
+        }
+
+        .sidebar-sponsor-block img {
+            max-width: 100%;
+            height: auto;
+            max-height: 40px;
+            display: block;
+            margin: 0 auto 0.25rem auto;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1A1A1A; 
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .main-layout-wrapper {
+                grid-template-columns: 1fr; /* Stacks sidebar beneath content on smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            .logo img {
+                height: 65px; 
+                margin-bottom: 1rem;
+            }
+            nav ul {
+                margin-top: 0.5rem;
+            }
+            .business-row-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .biz-links {
+                margin-top: 0.5rem;
+                width: 100%;
+            }
+            .action-link {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html" class="active">Business Directory</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Join Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Headline banner -->
+    <section class="page-title-section">
+        <h1>Chamber Business Directory</h1>
+        <p>Proudly supporting local enterprises across Richmond, Missouri, and Ray County.</p>
+    </section>
+
+    <!-- Two-Column Display Window -->
+    <div class="main-layout-wrapper">
+        
+        <!-- Left Side: Interactive Member Rows -->
+        <main class="directory-container">
+            
+            <!-- -A- SECTION -->
+            <div class="alphabet-header">A</div>
+            
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>AAA Disposal Service</h3>
+                    <p class="biz-details-text">31103 Blue Mills Rd., Buckner, MO 64016 | Phone: 816-650-3180</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link" target="_blank">Website</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Academy Bank</h3>
+                    <p class="biz-details-text">908 Walton Way, Richmond, MO 64085 | Phone: 816-470-3080</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link" target="_blank">Website</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>AG-Power</h3>
+                    <p class="biz-details-text">38835 Highway 10, Richmond, MO 64085 | Phone: 816-776-2261</p>
+                    <p class="biz-meta">Manager: Chris Roberson (Cell: 816-616-4527)</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Alvin's Heating & Cooling</h3>
+                    <p class="biz-details-text">601 S. Shaw, Richmond, MO 64085 | Phone: 776-6365</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-Mail</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>American Family Insurance</h3>
+                    <p class="biz-details-text">105 W. Main (P.O. Box 155), Richmond, MO 64085 | Phone: 816-776-2280</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Anytime Fitness</h3>
+                    <p class="biz-details-text">218 S. Thornton Street, Richmond, MO 64085 | Phone: 816-776-5656</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Ashlock Insurance</h3>
+                    <p class="biz-details-text">201 E. Lexington St, Suite 2, Richmond, MO 64085 | Phone: 816-402-2300</p>
+                    <p class="biz-meta">David@ashlockinsurance.com</p>
+                </div>
+                <div class="biz-links"></div>
+            </div>
+
+            <!-- -B- SECTION -->
+            <div class="alphabet-header">B</div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Bank Midwest N.A.</h3>
+                    <p class="biz-details-text">200 N. Spartan Drive, Richmond, MO 64085 | Phone: 816-470-6400</p>
+                    <p class="biz-meta">Bank Manager: Alison Acree</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Beacon Mental Health</h3>
+                    <p class="biz-details-text">3100 NE 83rd St., Ste. 1001, Kansas City, MO 64119 | Main: 816-468-0400</p>
+                    <p class="biz-meta">Brande Rash (Community Liaison): 816-877-0468 | Dr. Kristin Feeback (CBO)</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Bank of Orrick / TBO</h3>
+                    <p class="biz-details-text">PO Box 199, Orrick, MO 64077 | Phone: 816-770-3311</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link" target="_blank">Website</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Blue Sparrow Lawn and Landscape</h3>
+                    <p class="biz-details-text">107 N Industrial Park Rd | Phone: 816-848-5044</p>
+                    <p class="biz-meta">Joy Day (Sales Director, ext 3) | Sheryl Hoeffer (Office Manager)</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">Email</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Boy Scout Troop 324</h3>
+                    <p class="biz-details-text">501 Dameal Ave., Richmond, MO 64085 | Phone: 816-695-1080</p>
+                    <p class="biz-meta">Scout Master: Joe Davis</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">Email</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>The Branded Steakhouse & Tap Room</h3>
+                    <p class="biz-details-text">708 Wollard Blvd, Richmond, MO 64085 | Phone: 816-776-6465</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link" target="_blank">Facebook</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Bridge Of Hope</h3>
+                    <p class="biz-details-text">112 S. College St, Richmond, MO 64085 | Phone: 816-520-7828</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Bumper to Bumper</h3>
+                    <p class="biz-details-text">110 Main St., Richmond, MO 64085 | Phone: 816-776-2258</p>
+                    <p class="biz-meta">Managers: Jennifer Taylor, Tommy Manley</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Sally A Burnett</h3>
+                    <p class="biz-details-text">8272 Hwy E, Mayview, MO 64071 | Phone: 816-263-1383</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <!-- -C- SECTION -->
+            <div class="alphabet-header">C</div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>C & C Discount Drug</h3>
+                    <p class="biz-details-text">508 Johnny Walker Lane., Richmond, MO 64085 | Phone: 816-776-6926</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>C&S Apartments</h3>
+                    <p class="biz-details-text">Richmond, Missouri 64085 | Phone: 816-470-5851</p>
+                </div>
+                <div class="biz-links"></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Carter Media, LLC</h3>
+                    <p class="biz-details-text">102 N Mason, Carrollton, MO 64633 | Phone: 660-542-0404</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Carter Monuments & Design</h3>
+                    <p class="biz-details-text">39718 Bus. Hwy. 10 West, Richmond, MO 64085 | Phone: 816-536-9515</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Central Missouri Community Credit Union</h3>
+                    <p class="biz-details-text">920 Stonner Loop, Richmond, MO 64085 | Phone: 816-776-5593</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-Mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>City of Richmond</h3>
+                    <p class="biz-details-text">205 Summit St., Richmond, MO 64085 | Phone: 816-776-5304</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Clint Evans Heating and Cooling</h3>
+                    <p class="biz-details-text">10603 Daugherty Rd., Richmond, MO 64085 | Phone: 816-517-4898</p>
+                </div>
+                <div class="biz-links"></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Community Bank of Missouri</h3>
+                    <p class="biz-details-text">904 Walton Way, P.O. Box 188, Richmond, MO 64085 | Phone: 816-776-6669</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Complete Auto Service Center</h3>
+                    <p class="biz-details-text">718 Wollard Blvd, Richmond, MO 64085 | Phone: 816-776-3099</p>
+                    <p class="biz-meta">Amanda and Mark Guy</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Cox Family Farms</h3>
+                    <p class="biz-details-text">44751 East 156th Street, Richmond, MO 64085</p>
+                    <p class="biz-meta">Stacey: 816-517-8827 | Eddie: 816-739-9388</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <!-- -D- SECTION -->
+            <div class="alphabet-header">D</div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>D & M Plumbing</h3>
+                    <p class="biz-details-text">PO Box 798 Warrensburg, MO 64093 | Phone: 660-747-7808</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>DG Endeavors</h3>
+                    <p class="biz-details-text">123 W. Lexington St., Richmond, MO 64085 | Phone: 816-776-2118</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Direct Transit</h3>
+                    <p class="biz-details-text">213 Valley Dr., Richmond, MO 64085 | Phone: 816-776-8058</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <!-- -E- SECTION -->
+            <div class="alphabet-header">E</div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Edward Jones - Richard Bidding, AAMS</h3>
+                    <p class="biz-details-text">102 North College, Richmond, MO 64085 | Phone: 816-776-5458</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Edward Jones - Brett Smoot</h3>
+                    <p class="biz-details-text">201 E Lexington, Richmond, MO 64085 | Phone: 816-615-0125</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Excelsior Springs Job Corps Center</h3>
+                    <p class="biz-details-text">701 St. Louis Ave., Excelsior Springs, MO 64024 | Office: 816-629-3200</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Equitable Advisors - Troy Rust</h3>
+                    <p class="biz-details-text">717 E. South St., Richmond, MO 64085 | Office: 913-696-2413</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <!-- -F- SECTION -->
+            <div class="alphabet-header">F</div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Tatha Farnan (Spartan Success)</h3>
+                    <p class="biz-details-text">10373 Hwy EE, Richmond, MO 64084 | Phone: 816-516-6566</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>FCS Financial</h3>
+                    <p class="biz-details-text">4100 Hwy. 13 Blvd., Higginsville, MO 64037 | Phone: 855-507-2276</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>First Baptist Church of Richmond</h3>
+                    <p class="biz-details-text">306 W. Main St., Richmond, MO 64085 | Phone: 816-776-2296</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Flat Branch Bank</h3>
+                    <p class="biz-details-text">803 Wollard Blvd., Richmond, MO 64085 | Phone: 816-776-7070</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Flexible Staffing of Clay County</h3>
+                    <p class="biz-details-text">201 N. Jesse James Rd., Excelsior Springs, MO 64024 | Phone: 816-630-4600</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Fordyce Contracting & Construction LLC</h3>
+                    <p class="biz-details-text">503 Mount St., Polo, MO 64671 | Owner: Coty Fordyce (816-632-0841)</p>
+                    <p class="biz-meta">Contact: Mike Shelton (479-841-2599)</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Four Seasons In-Home Services</h3>
+                    <p class="biz-details-text">908 N 2nd St, Clinton, MO 64735 | Phone: 660-890-2130</p>
+                    <p class="biz-meta">Shauna Smith (Exec. Dir.) | Teresa Evans (Vice President)</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">Email</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Fowler Bus Co.</h3>
+                    <p class="biz-details-text">1213 E. Main, Richmond, MO 64085 | Phone: 816-776-2548</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-Mail</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Friends of the Farris, Inc.</h3>
+                    <p class="biz-details-text">301 W. Main St., Richmond, MO 64085 | Phone: 816-776-6684</p>
+                    <p class="biz-meta">Executive Director: Leslyn Green</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <!-- -G- SECTION -->
+            <div class="alphabet-header">G</div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>GAP Assistance Program of Ray County</h3>
+                    <p class="biz-details-text">820 E. Lexington St., Richmond, MO 64085 | Phone: 816-776-5413</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link" target="_blank">Facebook</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>George's Liquor</h3>
+                    <p class="biz-details-text">309 Wollard Blvd., Richmond, MO 64085 | Phone: 816-776-2366</p>
+                </div>
+                <div class="biz-links"></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Gill Grain Investments</h3>
+                    <p class="biz-details-text">123 W. Lexington St., Richmond, MO 64085 | Phone: 816-776-2118</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Gomez Roofing, LLC</h3>
+                    <p class="biz-details-text">13001 East US 40 Highway, Independence, MO 64052 | Phone: 816-335-7479</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">Email</a></div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Good Samaritan Center</h3>
+                    <p class="biz-details-text">108 S. Thompson Ave., Excelsior Springs, MO 64024 | Phone: 816-630-2718 ext. 28</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Goppert Financial Bank</h3>
+                    <p class="biz-details-text">521 Johnny Walker Ln., Richmond, MO 64085 | Phone: 816-323-0155</p>
+                </div>
+                <div class="biz-links">
+                    <a href="#" class="action-link">E-mail</a>
+                    <a href="#" class="action-link" target="_blank">Website</a>
+                </div>
+            </div>
+
+            <div class="business-row-card">
+                <div class="biz-main-info">
+                    <h3>Griffith-Skiles American Legion Post #237</h3>
+                    <p class="biz-details-text">312 Clark St., Richmond, MO 64085 | Phone: 816-776-8056</p>
+                </div>
+                <div class="biz-links"><a href="#" class="action-link">E-mail</a></div>
+            </div>
+
+            <!-- Note: You can continue inserting structural layout cards here for H-Z using this same template framework. -->
+
+        </main>
+        
+        <!-- Right Side: Branded Sponsor Sideboard Panel -->
+        <aside class="sponsor-sidebar-panel">
+            
+            <!-- GOLD SECTION -->
+            <div class="sidebar-tier-title tier-gold">Gold Sponsors</div>
+            
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Academy Bank Logo"> Academy Bank
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Bank Midwest Logo"> Bank Midwest
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="TBO Logo"> Bank of Orrick / TBO
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="CMCCU Logo"> Central MO Credit Union
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="City Logo"> City of Richmond
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Community Bank Logo"> Community Bank of MO
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Equitable Logo"> Troy Rust - Equitable Advisors
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Flat Branch Logo"> Flat Branch Bank
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Henkel Logo"> Henkel Corporation
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="MO Farm Logo"> MO Farm & Home Insurance
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Thurman Logo"> Thurman Funeral Home
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="United Fiber Logo"> United Fiber
+            </a>
+            <a href="#" class="sidebar-sponsor-block">
+                <img src="sponsor-placeholder.png" alt="Westbrook Logo"> Westbrook & Co.
+            </a>
+
+            <!-- SILVER SECTION -->
+            <div class="sidebar-tier-title tier-silver" style="margin-top: 1.5rem;">Silver Sponsors</div>
+            <a href="#" class="sidebar-sponsor-block">Max Motors</a>
+            <a href="#" class="sidebar-sponsor-block">RnR Designs</a>
+
+            <!-- BRONZE SECTION -->
+            <div class="sidebar-tier-title tier-bronze" style="margin-top: 1.5rem;">Bronze Sponsors</div>
+            <a href="#" class="sidebar-sponsor-block">Deon's Body Shop</a>
+            <a href="#" class="sidebar-sponsor-block">Edward Jones - R. Bidding</a>
+            <a href="#" class="sidebar-sponsor-block">Ray-Carroll Grain Growers</a>
+            <a href="#" class="sidebar-sponsor-block">Ray County Stone Producers</a>
+            <a href="#" class="sidebar-sponsor-block">Shirkey Recreation Park</a>
+            <a href="#" class="sidebar-sponsor-block">US Granules</a>
+            <a href="#" class="sidebar-sponsor-block">Wood Shed Lumber</a>
+
+        </aside>
+
+    </div>
+
+    <!-- Page Footer -->
+    <footer>
+        <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #777;">Powered by GitHub Pages</p>
+    </footer>
+
+</body>
+</html>
