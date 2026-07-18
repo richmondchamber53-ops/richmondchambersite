@@ -261,6 +261,24 @@
         <p>Supporting Ray County commerce, tourism, and local enterprise in the historic heart of Richmond, Missouri.</p>
         <a href="#" class="cta-btn">Become a Member Today</a>
         <a href="https://www.facebook.com/richmondmissourichamberofcommerce" target="_blank" class="hero-btn fb-hero-btn">Follow Us on Facebook</a>
+        .fb-hero-btn {
+            background-color: #3b5998; /* Official Facebook Blue */
+            margin-left: 1rem; /* Puts a clean space between the two buttons */
+        }
+
+        .fb-hero-btn:hover {
+            background-color: #2d4373; /* Darker blue shade on hover state */
+        }
+
+        /* Responsive tweak for mobile screens so the buttons stack neatly */
+        @media (max-width: 576px) {
+            .hero-btn {
+                display: block;
+                width: 100%;
+                margin-left: 0 !important;
+                margin-bottom: 1rem;
+            }
+        }
     </section>
 
     <!-- Main Content -->
