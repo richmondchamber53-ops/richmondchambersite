@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Richmond Area Chamber of Commerce</title>
+    <style>
+        /* Modern Reset & Corporate Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #1A1A1A; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo img {
+            height: 85px; 
+            width: auto;  
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #D22B2B; 
+        }
+
+        /* Page Banner */
+        .page-title-section {
+            background-color: #1A1A1A;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-title-section p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        /* Core Contact Wrapper Grid */
+        .contact-wrapper {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 4rem;
+        }
+
+        /* Left Column: Information Cards */
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-left: 4px solid #D22B2B;
+            border-top: 1px solid #e2e2e2;
+            border-right: 1px solid #e2e2e2;
+            border-bottom: 1px solid #e2e2e2;
+            border-radius: 4px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .info-card h3 {
+            color: #1A1A1A;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            color: #555;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .info-card a {
+            color: #D22B2B;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Right Column: Interactive Form */
+        .form-column {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 3rem;
+            border: 1px solid #e2e2e2;
+        }
+
+        .form-column h2 {
+            font-size: 1.75rem;
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-column p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #1A1A1A;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: #fafafa;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #D22B2B;
+            background-color: #fff;
+        }
+
+        .submit-btn {
+            background-color: #1A1A1A;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #D22B2B;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #1A1A1A; 
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            .logo img {
+                height: 65px; 
+                margin-bottom: 1rem;
+            }
+            nav ul {
+                margin-top: 0.5rem;
+            }
+            .form-column {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Business Directory</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title Banner -->
+    <section class="page-title-section">
+        <h1>Connect With Us</h1>
+        <p>Have questions about local commercial resources or city alignment? Drop us a line.</p>
+    </section>
+
+    <!-- Main Content Container Grid Split -->
+    <main class="contact-wrapper">
+
+        <!-- Left Side Column: Office & Staff Info -->
+        <section class="info-column">
+            
+            <!-- Phone & Communication Info -->
+            <div class="info-card">
+                <h3>Chamber HQ Phone</h3>
+                <p>Call the administrative hub directly for quick inquiries regarding directory placements or civic registrations:</p>
+                <p style="font-size: 1.4rem; font-weight: 800; margin-top: 0.5rem;">
+                    <a href="tel:8167766916">816-776-6916</a>
+                </p>
+            </div>
+
+            <!-- Administration Leadership Roles -->
+            <div class="info-card">
+                <h3>Executive Leadership Emails</h3>
+                <p style="margin-bottom: 1rem;">Reach out to specialized regional contacts directly regarding community initiatives or operations:</p>
+                
+                <p><strong>Executive Director:</strong></p>
+                <p style="margin-bottom: 0.75rem;"><a href="mailto:director@richmondchamber.org">director@richmondchamber.org</a></p>
+                
+                <p><strong>Activity & Communications Director:</strong></p>
+                <p><a href="mailto:activitydirector@richmondchamber.org">activitydirector@richmondchamber.org</a></p>
+            </div>
+
+            <!-- Office Hours -->
+            <div class="info-card">
+                <h3>Operational Hours</h3>
+                <p>Feel free to reach out via telecommunications during regular administrative operating windows:</p>
+                <p style="margin-top: 0.5rem; font-weight: 600; color: #1A1A1A;">Monday — Friday: 9:00 AM - 4:00 PM</p>
+                <p style="font-size: 0.85rem; color:#777; italic;">Closed during major state and federal holidays.</p>
+            </div>
+
+        </section>
+
+        <!-- Right Side Column: Interactive Form Routing System -->
+        <section class="form-column">
+            <h2>Send a Direct Message</h2>
+            <p>Fill out the layout block below to securely route your comment or inquiry to the Chamber administrative core.</p>
+            
+            <form action="https://formsubmit.co/director@richmondchamber.org" method="POST">
+                
+                <!-- Automated Form Routing Options -->
+                <input type="hidden" name="_cc" value="activitydirector@richmondchamber.org">
+                <input type="hidden" name="_subject" value="New General Web Inquiry — Richmond Chamber Site">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label for="contact-name">Your Full Name *</label>
+                    <input type="text" id="contact-name" name="Sender Name" required placeholder="First and Last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-email">Email Address *</label>
+                    <input type="email" id="contact-email" name="Sender Email" required placeholder="name@domain.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiry-type">What is your message regarding? *</label>
+                    <select id="inquiry-type" name="Inquiry Category" required>
+                        <option value="" disabled selected>-- Choose a category --</option>
+                        <option value="Directory Listing Update">Roster/Directory Profile Update</option>
+                        <option value="Event Sponsorship / RSVP">Chamber Event or Luncheon RSVP</option>
+                        <option value="Membership Question">Membership Tier Information</option>
+                        <option value="General Inquiry">General Community Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message-body">Message / Inquiry Details *</label>
+                    <textarea id="message-body" name="Message Content" rows="6" required placeholder="Type your notes or questions here..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Page Footer -->
+    <footer>
+        <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #777;">Powered by GitHub Pages</p>
+    </footer>
+
+</body>
+</html>
