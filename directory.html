@@ -5,510 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Directory | Richmond Area Chamber of Commerce</title>
     <style>
-        /* Modern Reset & Corporate Typography */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            color: #333;
-            line-height: 1.6;
-            background-color: #f4f6f9;
-        }
-
-       /* ==========================================
-   NAVIGATION BAR STYLES (Desktop & Mobile)
-   ========================================== */
-
-/* Header Container */
-header {
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.75rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo img {
-    height: 80px;
-    width: auto;
-    display: block;
-}
-
-/* Desktop Navigation (Visible on Large Screens) */
-.desktop-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 1.75rem;
-}
-
-.desktop-nav ul li a {
-    color: #374151;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: color 0.2s ease;
-}
-
-.desktop-nav ul li a:hover,
-.desktop-nav ul li a.active {
-    color: #D22B2B;
-}
-
-/* Mobile Hamburger Button (Hidden on Desktop) */
-.mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-}
-
-.mobile-menu-btn span {
-    width: 100%;
-    height: 3px;
-    background-color: #1f2937;
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Mobile Dropdown Navigation (Hidden by Default!) */
-.mobile-nav {
-    display: none; /* Prevents the second bar from appearing on desktop */
-    background-color: #ffffff;
-    border-top: 1px solid #f3f4f6;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0.5rem 0;
-}
-
-.mobile-nav ul li a {
-    display: block;
-    padding: 0.85rem 1.5rem;
-    color: #374151;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    border-bottom: 1px solid #f9fafb;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.mobile-nav ul li a:hover,
-.mobile-nav ul li a.active {
-    color: #D22B2B;
-    background-color: #fef2f2;
-}
-
-/* ==========================================
-   MOBILE RESPONSIVE BREAKPOINT (Under 768px)
-   ========================================== */
-@media (max-width: 768px) {
-    /* Hide the horizontal desktop links */
-    .desktop-nav {
-        display: none;
-    }
-
-    /* Show the hamburger icon */
-    .mobile-menu-btn {
-        display: flex;
-    }
-
-    /* When JavaScript adds the '.open' class, reveal the mobile dropdown */
-    .mobile-nav.open {
-        display: block;
-    }
-
-    /* Transform hamburger 3-bar icon into an 'X' when menu is open */
-    .mobile-menu-btn.open span:nth-child(1) {
-        transform: translateY(8.5px) rotate(45deg);
-    }
-
-    .mobile-menu-btn.open span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-menu-btn.open span:nth-child(3) {
-        transform: translateY(-8.5px) rotate(-45deg);
-    }
-}
-
-        /* Main Container Layout */
-        .main-container {
-            max-width: 1240px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: #1A1A1A;
-            margin-bottom: 0.5rem;
-        }
-
-        .page-header p {
-            color: #666;
-            font-size: 1.15rem;
-        }
-
-        /* Search & Category Filter Controls */
-        .directory-controls {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            margin-bottom: 2rem;
-            border-left: 6px solid #D22B2B;
-        }
-
-        .search-box-container {
-            margin-bottom: 1.25rem;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.9rem 1.25rem;
-            font-size: 1.05rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            background-color: #fafafa;
-        }
-
-        .search-input:focus {
-            border-color: #D22B2B;
-            box-shadow: 0 0 0 3px rgba(210, 43, 43, 0.1);
-            background-color: #ffffff;
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .filter-btn {
-            background-color: #f0f2f5;
-            color: #555;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .filter-btn:hover {
-            background-color: #e2e6ea;
-            color: #1A1A1A;
-        }
-
-        .filter-btn.active {
-            background-color: #D22B2B;
-            color: #ffffff;
-        }
-
-        .results-count {
-            font-size: 0.9rem;
-            color: #777;
-            font-weight: 600;
-        }
-
-        /* Directory Cards Grid */
-        .directory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            min-height: 400px;
-        }
-
-        .business-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-            border: 1px solid #eef0f3;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .business-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-
-        .business-category {
-            display: inline-block;
-            background-color: #fff2f2;
-            color: #D22B2B;
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            margin-bottom: 0.75rem;
-            align-self: flex-start;
-            letter-spacing: 0.5px;
-        }
-
-        .business-name {
-            font-size: 1.2rem;
-            color: #1A1A1A;
-            margin-bottom: 0.5rem;
-        }
-
-        .business-info {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 1rem;
-        }
-
-        .business-info p {
-            margin-bottom: 0.3rem;
-        }
-
-        .business-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: auto;
-            padding-top: 0.85rem;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .card-btn {
-            flex: 1;
-            text-align: center;
-            text-decoration: none;
-            padding: 0.45rem 0.5rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            transition: background-color 0.2s;
-        }
-
-        .btn-call {
-            background-color: #f0f2f5;
-            color: #333;
-        }
-
-        .btn-call:hover {
-            background-color: #e2e6ea;
-        }
-
-        .btn-website {
-            background-color: #D22B2B;
-            color: #ffffff;
-        }
-
-        .btn-website:hover {
-            background-color: #b12020;
-        }
-
-        /* Empty State */
-        .no-results {
-            display: none;
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 4rem 2rem;
-            background: #ffffff;
-            border-radius: 12px;
-            color: #666;
-        }
-
-        .no-results h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Pagination Control Bar */
-        .pagination-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .page-btn {
-            background-color: #ffffff;
-            color: #444;
-            border: 1px solid #e0e0e0;
-            padding: 0.5rem 0.85rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-        }
-
-        .page-btn:hover:not(:disabled) {
-            background-color: #f0f2f5;
-            border-color: #ccc;
-            color: #1A1A1A;
-        }
-
-        .page-btn.active {
-            background-color: #D22B2B;
-            color: #ffffff;
-            border-color: #D22B2B;
-        }
-
-        .page-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Footer Styling */
-        footer {
-            background-color: #1A1A1A; 
-            color: #d1d1d1;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 6rem;
-            font-size: 0.95rem;
-            border-top: 4px solid #D22B2B;
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.2s;
-        }
-
-        footer a:hover {
-            color: #D22B2B;
-        }
-
-        .github-powered {
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 0.75rem;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { color: #333; line-height: 1.6; background-color: #f4f6f9; }
+        header { background-color: #ffffff; border-bottom: 4px solid #D22B2B; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1.5rem; }
+        .logo img { height: 75px; width: auto; display: block; }
+        .desktop-nav ul { display: flex; list-style: none; gap: 1.75rem; }
+        .desktop-nav ul li a { text-decoration: none; color: #444; font-weight: 600; font-size: 1.05rem; transition: color 0.3s; padding: 0.5rem 0; }
+        .desktop-nav ul li a:hover, .desktop-nav ul li a.active { color: #D22B2B; }
+        .mobile-menu-btn { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
+        .mobile-menu-btn span { width: 100%; height: 3px; background-color: #1A1A1A; border-radius: 2px; transition: all 0.3s ease; }
+        .mobile-nav { display: none; background-color: #ffffff; border-top: 1px solid #e0e0e0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; }
+        .mobile-nav ul { list-style: none; padding: 0.5rem 0; }
+        .mobile-nav ul li a { display: block; padding: 0.85rem 1.5rem; color: #444; text-decoration: none; font-weight: 600; font-size: 1.05rem; border-bottom: 1px solid #f4f6f9; text-align: center; }
+        .mobile-nav ul li a:hover, .mobile-nav ul li a.active { color: #D22B2B; background-color: #fff2f2; }
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.25rem 1rem;
-            }
-            .logo img {
-                height: 70px; 
-                margin-bottom: 1.25rem;
-            }
-            nav ul li {
-                margin: 0 0.75rem;
-            }
-            .main-container {
-                padding: 0 1rem;
-            }
-            .pagination-container {
-                gap: 0.25rem;
-            }
-            .page-btn {
-                padding: 0.4rem 0.65rem;
-                font-size: 0.8rem;
-            }
+            .logo img { height: 60px; } .desktop-nav { display: none; } .mobile-menu-btn { display: flex; } .mobile-nav.open { display: block; }
+            .mobile-menu-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+            .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
+        footer { background-color: #1A1A1A; color: #d1d1d1; text-align: center; padding: 2.5rem 1.5rem; margin-top: 5rem; border-top: 4px solid #D22B2B; }
+        footer a { color: white; font-weight: bold; text-decoration: none; }
+
+        /* Directory Styles */
+        .main-container { max-width: 1240px; margin: 2.5rem auto; padding: 0 1.5rem; }
+        .page-header { text-align: center; margin-bottom: 2rem; }
+        .page-header h1 { font-size: 2.4rem; color: #1A1A1A; margin-bottom: 0.5rem; }
+        .directory-controls { background: #ffffff; border-radius: 12px; padding: 1.75rem; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 2rem; border-left: 6px solid #D22B2B; }
+        .search-input { width: 100%; padding: 0.85rem 1.15rem; font-size: 1rem; border: 2px solid #e0e0e0; border-radius: 8px; outline: none; background-color: #fafafa; margin-bottom: 1.25rem; }
+        .search-input:focus { border-color: #D22B2B; background-color: #ffffff; }
+        .filter-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .filter-btn { background-color: #f0f2f5; color: #555; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+        .filter-btn.active { background-color: #D22B2B; color: #ffffff; }
+        .results-count { font-size: 0.9rem; color: #777; font-weight: 600; }
+        .directory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; min-height: 400px; }
+        .business-card { background-color: #ffffff; border-radius: 10px; padding: 1.25rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid #eef0f3; display: flex; flex-direction: column; justify-content: space-between; }
+        .business-category { display: inline-block; background-color: #fff2f2; color: #D22B2B; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; }
+        .business-name { font-size: 1.15rem; color: #1A1A1A; margin-bottom: 0.5rem; }
+        .business-info { font-size: 0.88rem; color: #555; margin-bottom: 1rem; }
+        .business-actions { display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid #f0f0f0; }
+        .card-btn { flex: 1; text-align: center; text-decoration: none; padding: 0.45rem 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+        .btn-call { background-color: #f0f2f5; color: #333; }
+        .btn-website { background-color: #D22B2B; color: #ffffff; }
+        .no-results { display: none; grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; background: #ffffff; border-radius: 12px; color: #666; }
+        .pagination-container { display: flex; justify-content: center; align-items: center; gap: 0.35rem; margin-top: 2.5rem; flex-wrap: wrap; }
+        .page-btn { background-color: #ffffff; color: #444; border: 1px solid #e0e0e0; padding: 0.45rem 0.8rem; border-radius: 6px; font-weight: 600; font-size: 0.88rem; cursor: pointer; }
+        .page-btn.active { background-color: #D22B2B; color: #ffffff; border-color: #D22B2B; }
+        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
 <body>
-
-    <!-- Header Navigation with Mobile Support -->
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
+    <header>
+        <div class="nav-container">
+            <div class="logo"><a href="index.html"><img src="chamberlogo.png" alt="Richmond Chamber Logo"></a></div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html" class="active">Business Directory</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-
-        <!-- Mobile Hamburger Toggle Button -->
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="desktop-nav">
+        <nav class="mobile-nav" id="mobileNav">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="directory.html"class="active">Business Directory</a></li>
+                <li><a href="directory.html" class="active">Business Directory</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="join.html">Join Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-    </div>
-
-    <!-- Mobile Dropdown Navigation Menu -->
-    <nav class="mobile-nav" id="mobileNav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="directory.html"class="active">Business Directory</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="join.html">Join Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    </header>
 
     <main class="main-container">
-        
         <div class="page-header">
             <h1>Business Directory</h1>
             <p>Search over 300 Chamber members and local businesses across Richmond & Ray County.</p>
         </div>
 
-        <!-- Filter & Search Controls -->
         <section class="directory-controls">
-            <div class="search-box-container">
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    class="search-input" 
-                    placeholder="Search 300+ businesses by name, category, or keyword..."
-                    autocomplete="off"
-                >
-            </div>
-
+            <input type="text" id="searchInput" class="search-input" placeholder="Search 300+ businesses by name, category, or keyword..." autocomplete="off">
             <div class="filter-buttons">
                 <button class="filter-btn active" data-category="all">All Categories</button>
                 <button class="filter-btn" data-category="financial">Financial & Legal</button>
@@ -517,240 +97,96 @@ header {
                 <button class="filter-btn" data-category="dining">Dining & Retail</button>
                 <button class="filter-btn" data-category="services">Local Services</button>
             </div>
-
             <div class="results-count" id="resultsCount">Loading directory listings...</div>
         </section>
 
-        <!-- Directory Cards Container -->
         <section class="directory-grid" id="directoryGrid">
             <div class="no-results" id="noResults">
                 <h3>No Matching Businesses Found</h3>
-                <p>Try adjusting your search terms or choosing "All Categories".</p>
+                <p>Try adjusting your search terms.</p>
             </div>
         </section>
 
-        <!-- Dynamic Pagination Buttons -->
         <div class="pagination-container" id="paginationContainer"></div>
-
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
         <p><a href="https://www.facebook.com/richmondmissourichamberofcommerce" target="_blank">Connect with us on Facebook</a></p>
-        <p class="github-powered">Powered by GitHub Pages</p>
     </footer>
 
-    <!-- Interactive Search, Filter & 18-Per-Page Engine -->
     <script>
-        const categories = [
-            { id: 'financial', name: 'Financial & Legal' },
-            { id: 'healthcare', name: 'Healthcare & Medical' },
-            { id: 'agriculture', name: 'Agriculture & Industry' },
-            { id: 'dining', name: 'Dining & Retail' },
-            { id: 'services', name: 'Local Services' }
-        ];
+        // Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobileMenuBtn'), nav = document.getElementById('mobileNav');
+            if(btn && nav) btn.addEventListener('click', () => { btn.classList.toggle('open'); nav.classList.toggle('open'); });
+        });
 
-        const businessTypes = [
-            { cat: 'financial', title: 'Accounting', desc: 'Financial planning, audit, & tax preparation' },
-            { cat: 'financial', title: 'Bank', desc: 'Commercial & personal banking solutions' },
-            { cat: 'financial', title: 'Law Firm', desc: 'Legal counsel and estate planning' },
-            { cat: 'healthcare', title: 'Clinic', desc: 'Family care & medical consultations' },
-            { cat: 'healthcare', title: 'Dental', desc: 'Comprehensive family dentistry' },
-            { cat: 'healthcare', title: 'Pharmacy', desc: 'Prescriptions and medical supplies' },
-            { cat: 'agriculture', title: 'Grain & Supply', desc: 'Agricultural feeds, seed, & fertilizers' },
-            { cat: 'agriculture', title: 'Equipment Repair', desc: 'Tractor and farm vehicle servicing' },
-            { cat: 'dining', title: 'Diner', desc: 'Home-cooked breakfast and lunch specials' },
-            { cat: 'dining', title: 'Bakery', desc: 'Fresh baked goods, pastries, and coffee' },
-            { cat: 'services', title: 'Auto Repair', desc: 'Complete automotive diagnostics and maintenance' },
-            { cat: 'services', title: 'Plumbing', desc: 'Residential & commercial plumbing solutions' },
-            { cat: 'services', title: 'Hardware', desc: 'Tools, paints, and home improvement supplies' }
-        ];
+        // Directory Script
+        const categories = [{id:'financial',name:'Financial & Legal'},{id:'healthcare',name:'Healthcare & Medical'},{id:'agriculture',name:'Agriculture & Industry'},{id:'dining',name:'Dining & Retail'},{id:'services',name:'Local Services'}];
+        const businessTypes = [{cat:'financial',title:'Accounting',desc:'Financial planning, audit, & tax preparation'},{cat:'financial',title:'Bank',desc:'Commercial & personal banking solutions'},{cat:'healthcare',title:'Clinic',desc:'Family care & medical consultations'},{cat:'agriculture',title:'Grain & Supply',desc:'Agricultural feeds, seed, & fertilizers'},{cat:'dining',title:'Diner',desc:'Home-cooked specials'},{cat:'services',title:'Auto Repair',desc:'Diagnostics and maintenance'}];
+        const streetNames = ['Main St', 'Thornton St', 'Lexington St', 'College St', 'Franklin St'];
 
-        const streetNames = ['Main St', 'Thornton St', 'Lexington St', 'College St', 'Franklin St', 'Walnut St', 'Avenue St'];
-
-        // Generate 300 business entries dynamically
-        const allBusinesses = [];
-        
-        // Featured corporate partners
-        allBusinesses.push(
+        const allBusinesses = [
             { id: 1, name: 'Westbrook & Co., P.C.', cat: 'financial', catName: 'Financial & Legal', phone: '(816) 776-3584', address: '102 N Thornton St', desc: 'Certified Public Accountants & Business Consultants', web: 'https://westbrookcpas.com' },
             { id: 2, name: 'Shirkey Health Services', cat: 'healthcare', catName: 'Healthcare & Medical', phone: '(816) 776-5403', address: '804 W Main St', desc: 'Skilled Nursing, Rehabilitation & Senior Care', web: 'http://shirkeyhealth.com' },
             { id: 3, name: 'Ray-Carroll County Grain Growers', cat: 'agriculture', catName: 'Agriculture & Industry', phone: '(816) 776-2291', address: '808 W Lexington St', desc: 'Agricultural Cooperative, Grain & Farm Supplies', web: 'http://ray-carroll.com' }
-        );
+        ];
 
-        // Generate up to 300 entries
         for (let i = 4; i <= 300; i++) {
             const type = businessTypes[(i % businessTypes.length)];
             const catObj = categories.find(c => c.id === type.cat);
-            const street = streetNames[(i % streetNames.length)];
-            const num = (100 + (i * 3)) % 990 + 10;
-            
             allBusinesses.push({
-                id: i,
-                name: `Richmond ${type.title} ${i}`,
-                cat: type.cat,
-                catName: catObj.name,
-                phone: `(816) 776-${1000 + i}`,
-                address: `${num} ${street}`,
-                desc: type.desc,
-                web: '#'
+                id: i, name: `Richmond ${type.title} ${i}`, cat: type.cat, catName: catObj.name,
+                phone: `(816) 776-${1000 + i}`, address: `${(100+(i*3))%990+10} ${streetNames[(i%streetNames.length)]}`,
+                desc: type.desc, web: '#'
             });
         }
 
-        // Configuration: 18 items per page for clean row layouts
-        const ITEMS_PER_PAGE = 18;
-        let currentPage = 1;
-        let currentCategory = 'all';
-        let searchQuery = '';
-        let filteredList = [...allBusinesses];
+        const ITEMS_PER_PAGE = 18; let currentPage = 1; let currentCategory = 'all'; let searchQuery = ''; let filteredList = [...allBusinesses];
+        const grid = document.getElementById('directoryGrid'), noRes = document.getElementById('noResults'), count = document.getElementById('resultsCount'), pageCont = document.getElementById('paginationContainer');
 
-        // DOM Elements
-        const directoryGrid = document.getElementById('directoryGrid');
-        const noResults = document.getElementById('noResults');
-        const searchInput = document.getElementById('searchInput');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const resultsCount = document.getElementById('resultsCount');
-        const paginationContainer = document.getElementById('paginationContainer');
-
-        function renderDirectory() {
+        function renderDir() {
             filteredList = allBusinesses.filter(b => {
-                const matchesCat = (currentCategory === 'all' || b.cat === currentCategory);
-                const query = searchQuery.toLowerCase();
-                const matchesSearch = b.name.toLowerCase().includes(query) || 
-                                      b.desc.toLowerCase().includes(query) || 
-                                      b.address.toLowerCase().includes(query) ||
-                                      b.catName.toLowerCase().includes(query);
-                return matchesCat && matchesSearch;
+                const matchCat = (currentCategory === 'all' || b.cat === currentCategory);
+                const q = searchQuery.toLowerCase();
+                return matchCat && (b.name.toLowerCase().includes(q) || b.desc.toLowerCase().includes(q) || b.address.toLowerCase().includes(q) || b.catName.toLowerCase().includes(q));
             });
+            filteredList.sort((a,b) => a.name.localeCompare(b.name));
+
+            const total = filteredList.length, totalPg = Math.ceil(total / ITEMS_PER_PAGE);
+            if (currentPage > totalPg) currentPage = Math.max(1, totalPg);
+            grid.innerHTML = '';
+
+            if (total === 0) { noRes.style.display = 'block'; count.textContent = 'Showing 0 businesses'; pageCont.innerHTML = ''; return; }
+            noRes.style.display = 'none';
+
+            const start = (currentPage - 1) * ITEMS_PER_PAGE, end = Math.min(start + ITEMS_PER_PAGE, total);
+            filteredList.slice(start, end).forEach(b => {
+                grid.innerHTML += `<article class="business-card"><div><span class="business-category">${b.catName}</span><h3 class="business-name">${b.name}</h3><div class="business-info"><p>📍 ${b.address}, Richmond, MO</p><p>📞 ${b.phone}</p><p>💼 ${b.desc}</p></div></div><div class="business-actions"><a href="tel:${b.phone.replace(/[^0-9]/g,'')}" class="card-btn btn-call">Call</a><a href="${b.web}" ${b.web !== '#' ? 'target="_blank"' : ''} class="card-btn btn-website">Website</a></div></article>`;
+            });
+            count.textContent = `Showing ${start + 1}-${end} of ${total} businesses`;
+            renderPage(totalPg);
+        }
+
+        function renderPage(totalPg) {
+            pageCont.innerHTML = ''; if (totalPg <= 1) return;
+            const prev = document.createElement('button'); prev.className = 'page-btn'; prev.innerHTML = '&laquo; Prev'; prev.disabled = (currentPage === 1);
+            prev.onclick = () => { if(currentPage>1){currentPage--; renderDir(); window.scrollTo({top:250, behavior:'smooth'});} }; pageCont.appendChild(prev);
             
-            filteredList.sort((a, b) => a.name.localeCompare(b.name));
-
-            const totalResults = filteredList.length;
-            const totalPages = Math.ceil(totalResults / ITEMS_PER_PAGE);
-
-            if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
-
-            directoryGrid.innerHTML = '';
-
-            if (totalResults === 0) {
-                noResults.style.display = 'block';
-                resultsCount.textContent = 'Showing 0 businesses';
-                paginationContainer.innerHTML = '';
-                return;
+            let st = Math.max(1, currentPage - 2), en = Math.min(totalPg, st + 4);
+            if (en - st < 4) st = Math.max(1, en - 4);
+            for (let i = st; i <= en; i++) {
+                const btn = document.createElement('button'); btn.className = `page-btn ${i===currentPage?'active':''}`; btn.textContent = i;
+                btn.onclick = () => { currentPage = i; renderDir(); window.scrollTo({top:250, behavior:'smooth'}); }; pageCont.appendChild(btn);
             }
-
-            noResults.style.display = 'none';
-
-            // Calculate slicing parameters for 18 per page
-            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-            const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalResults);
-            const pageItems = filteredList.slice(startIndex, endIndex);
-
-            pageItems.forEach(b => {
-                const card = document.createElement('article');
-                card.className = 'business-card';
-                card.innerHTML = `
-                    <div>
-                        <span class="business-category">${b.catName}</span>
-                        <h3 class="business-name">${b.name}</h3>
-                        <div class="business-info">
-                            <p>📍 ${b.address}, Richmond, MO</p>
-                            <p>📞 ${b.phone}</p>
-                            <p>💼 ${b.desc}</p>
-                        </div>
-                    </div>
-                    <div class="business-actions">
-                        <a href="tel:${b.phone.replace(/[^0-9]/g, '')}" class="card-btn btn-call">Call</a>
-                        <a href="${b.web}" ${b.web !== '#' ? 'target="_blank"' : ''} class="card-btn btn-website">Website</a>
-                    </div>
-                `;
-                directoryGrid.appendChild(card);
-            });
-
-            resultsCount.textContent = `Showing ${startIndex + 1}-${endIndex} of ${totalResults} businesses`;
-
-            renderPagination(totalPages);
+            const next = document.createElement('button'); next.className = 'page-btn'; next.innerHTML = 'Next &raquo;'; next.disabled = (currentPage === totalPg);
+            next.onclick = () => { if(currentPage<totalPg){currentPage++; renderDir(); window.scrollTo({top:250, behavior:'smooth'});} }; pageCont.appendChild(next);
         }
 
-        function renderPagination(totalPages) {
-            paginationContainer.innerHTML = '';
-            if (totalPages <= 1) return;
-
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'page-btn';
-            prevBtn.innerHTML = '&laquo; Prev';
-            prevBtn.disabled = (currentPage === 1);
-            prevBtn.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    renderDirectory();
-                    window.scrollTo({ top: 300, behavior: 'smooth' });
-                }
-            });
-            paginationContainer.appendChild(prevBtn);
-
-            let startPage = Math.max(1, currentPage - 2);
-            let endPage = Math.min(totalPages, startPage + 4);
-            if (endPage - startPage < 4) {
-                startPage = Math.max(1, endPage - 4);
-            }
-
-            for (let i = startPage; i <= endPage; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-                pageBtn.textContent = i;
-                pageBtn.addEventListener('click', () => {
-                    currentPage = i;
-                    renderDirectory();
-                    window.scrollTo({ top: 300, behavior: 'smooth' });
-                });
-                paginationContainer.appendChild(pageBtn);
-            }
-
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'page-btn';
-            nextBtn.innerHTML = 'Next &raquo;';
-            nextBtn.disabled = (currentPage === totalPages);
-            nextBtn.addEventListener('click', () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    renderDirectory();
-                    window.scrollTo({ top: 300, behavior: 'smooth' });
-                }
-            });
-            paginationContainer.appendChild(nextBtn);
-        }
-
-        searchInput.addEventListener('input', (e) => {
-            searchQuery = e.target.value;
-            currentPage = 1;
-            renderDirectory();
-        });
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                currentCategory = button.getAttribute('data-category');
-                currentPage = 1;
-                renderDirectory();
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', renderDirectory);
+        document.getElementById('searchInput').addEventListener('input', e => { searchQuery = e.target.value; currentPage = 1; renderDir(); });
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentCategory = btn.dataset.category; currentPage = 1; renderDir(); }));
+        renderDir();
     </script>
-    <script>
-  // Mobile Menu Toggle Script
-  const mobileBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-</script>
 </body>
 </html>
