@@ -514,6 +514,8 @@
                                       b.catName.toLowerCase().includes(query);
                 return matchesCat && matchesSearch;
             });
+            
+            filteredList.sort((a, b) => a.name.localeCompare(b.name));
 
             const totalResults = filteredList.length;
             const totalPages = Math.ceil(totalResults / ITEMS_PER_PAGE);
