@@ -353,23 +353,43 @@
 </head>
 <body>
 
-    <!-- Header & Navigation Bar -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="directory.html">Business Directory</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="join.html" class="active">Join Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+    <!-- Header Navigation with Mobile Support -->
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
         </div>
-    </header>
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="directory.html">Business Directory</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="join.html"class="active">Join Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Mobile Dropdown Navigation Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="directory.html">Business Directory</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="join.html"class="active">Join Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
     <!-- Page Title Banner -->
     <section class="page-title-section">
@@ -556,6 +576,16 @@
         <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
         <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #777;">Powered by GitHub Pages</p>
     </footer>
+<script>
+  // Mobile Menu Toggle Script
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
 </body>
 </html>
