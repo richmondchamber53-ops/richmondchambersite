@@ -652,5 +652,16 @@
 
         document.addEventListener('DOMContentLoaded', renderDirectory);
     </script>
+    <script>
+  // Mobile Menu Toggle Script
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
 </body>
 </html>
