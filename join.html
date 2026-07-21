@@ -5,45 +5,361 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Us | Richmond Area Chamber of Commerce</title>
     <style>
-        /* Global & Navigation Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { color: #333; line-height: 1.6; background-color: #f4f6f9; }
-        header { background-color: #ffffff; border-bottom: 4px solid #D22B2B; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1.5rem; }
-        .logo img { height: 75px; width: auto; display: block; }
-        .desktop-nav ul { display: flex; list-style: none; gap: 1.75rem; }
-        .desktop-nav ul li a { text-decoration: none; color: #444; font-weight: 600; font-size: 1.05rem; transition: color 0.3s; padding: 0.5rem 0; }
-        .desktop-nav ul li a:hover, .desktop-nav ul li a.active { color: #D22B2B; }
-        .mobile-menu-btn { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
-        .mobile-menu-btn span { width: 100%; height: 3px; background-color: #1A1A1A; border-radius: 2px; transition: all 0.3s ease; }
-        .mobile-nav { display: none; background-color: #ffffff; border-top: 1px solid #e0e0e0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; }
-        .mobile-nav ul { list-style: none; padding: 0.5rem 0; }
-        .mobile-nav ul li a { display: block; padding: 0.85rem 1.5rem; color: #444; text-decoration: none; font-weight: 600; font-size: 1.05rem; border-bottom: 1px solid #f4f6f9; text-align: center; }
-        .mobile-nav ul li a:hover, .mobile-nav ul li a.active { color: #D22B2B; background-color: #fff2f2; }
-        @media (max-width: 768px) {
-            .logo img { height: 60px; } .desktop-nav { display: none; } .mobile-menu-btn { display: flex; } .mobile-nav.open { display: block; }
-            .mobile-menu-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
-            .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        /* Modern Reset & Corporate Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        footer { background-color: #1A1A1A; color: #d1d1d1; text-align: center; padding: 2.5rem 1.5rem; margin-top: 5rem; border-top: 4px solid #D22B2B; }
-        footer a { color: white; font-weight: bold; text-decoration: none; }
 
-        /* Join Styles */
-        .content-container { max-width: 800px; margin: 3rem auto; padding: 0 1.5rem; }
-        .page-title { text-align: center; margin-bottom: 3rem; }
-        .page-title h1 { font-size: 2.5rem; color: #1A1A1A; margin-bottom: 0.5rem; }
-        .benefits-box { background: white; padding: 2.5rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-        .benefits-box ul { margin-left: 1.5rem; margin-top: 1rem; line-height: 1.8; }
-        .btn-main { display: inline-block; background-color: #D22B2B; color: white; padding: 0.8rem 1.5rem; text-decoration: none; font-weight: bold; border-radius: 6px; font-size: 1.1rem; text-align: center; width: 100%; }
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Header & Navigation (Matches directory.html) */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #1A1A1A; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo img {
+            height: 85px; 
+            width: auto;  
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #D22B2B; 
+        }
+
+        /* Page Banner */
+        .page-title-section {
+            background-color: #1A1A1A;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Core Layout Grid */
+        .join-wrapper {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Welcome Text Layout */
+        .welcome-box {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 5px solid #D22B2B;
+            margin-bottom: 3.5rem;
+        }
+
+        .welcome-box h2 {
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-box p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Benefits Section Split */
+        .benefits-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .benefits-block h3 {
+            color: #1A1A1A;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e2e2;
+            padding-bottom: 0.5rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .benefits-list li::before {
+            content: "•";
+            color: #D22B2B;
+            font-weight: bold;
+            font-size: 1.4rem;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+
+        /* Membership Dues Tiers Grid */
+        .dues-section {
+            margin-bottom: 5rem;
+        }
+
+        .dues-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #1A1A1A;
+            margin-bottom: 2.5rem;
+        }
+
+        .dues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
+            margin-bottom: 2rem;
+        }
+
+        .due-card {
+            background: #fff;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+
+        .due-card:hover {
+            transform: translateY(-3px);
+            border-color: #D22B2B;
+        }
+
+        .due-name {
+            font-weight: bold;
+            font-size: 1.15rem;
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+        }
+
+        .due-price {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #D22B2B;
+            margin-bottom: 1rem;
+        }
+
+        .due-price span {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .select-tier-btn {
+            background-color: #1A1A1A;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .select-tier-btn:hover {
+            background-color: #D22B2B;
+        }
+
+        .dues-footnotes {
+            background-color: #f1f1f1;
+            padding: 1.5rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .dues-footnotes p {
+            margin-bottom: 0.5rem;
+        }
+
+        .dues-footnotes p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Application Form Panel */
+        .form-section {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 3rem;
+            border: 1px solid #e2e2e2;
+        }
+
+        .form-section h2 {
+            font-size: 2rem;
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .form-section p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #1A1A1A;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: #fafafa;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #D22B2B;
+            background-color: #fff;
+        }
+
+        .submit-btn {
+            background-color: #1A1A1A;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #D22B2B;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #1A1A1A; 
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            .logo img {
+                height: 65px; 
+                margin-bottom: 1rem;
+            }
+            nav ul {
+                margin-top: 0.5rem;
+            }
+            .benefits-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .form-section {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header & Navigation Bar -->
     <header>
         <div class="nav-container">
-            <div class="logo"><a href="index.html"><img src="chamberlogo.png" alt="Richmond Chamber Logo"></a></div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-            <nav class="desktop-nav">
+            <div class="logo">
+                <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
+            </div>
+            <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="directory.html">Business Directory</a></li>
@@ -53,47 +369,193 @@
                 </ul>
             </nav>
         </div>
-        <nav class="mobile-nav" id="mobileNav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="directory.html">Business Directory</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="join.html" class="active">Join Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main class="content-container">
-        <div class="page-title">
-            <h1>Become a Member</h1>
-            <p>Invest in your business and the Ray County community.</p>
-        </div>
+    <!-- Page Title Banner -->
+    <section class="page-title-section">
+        <h1>Membership Information</h1>
+        <p>Invest in the future of our business community and elevate Ray County together.</p>
+    </section>
 
-        <div class="benefits-box">
-            <h2>Membership Benefits</h2>
-            <ul>
-                <li>Business listing in our online and printed directory</li>
-                <li>Ribbon cutting ceremonies for new businesses</li>
-                <li>Exclusive networking at monthly luncheons</li>
-                <li>Marketing and sponsorship opportunities</li>
-                <li>Advocacy at local and state government levels</li>
-            </ul>
-            <br>
-            <a href="contact.html" class="btn-main">Request an Application</a>
-        </div>
-    </main>
+    <!-- Main Content Container -->
+    <div class="join-wrapper">
 
+        <!-- Welcome Text / Intro Block -->
+        <section class="welcome-box">
+            <h2>Welcome to the Richmond Area Chamber of Commerce</h2>
+            <p>We are happy to help provide any answers to questions you may have regarding membership that you don’t get answered from the content below. Please contact us at <strong>816-776-6916</strong> or drop us a line here by using our application form below.</p>
+            <p>When you become a chamber member you invest in the future of the business community and ensure that the Chamber keeps working towards its mission. The Richmond Chamber works for every individual, business, and profession in the community.</p>
+        </section>
+
+        <!-- Benefits Lists Grid Split -->
+        <section class="benefits-container">
+            <div class="benefits-block">
+                <h3>Benefits of Joining Our Chamber</h3>
+                <ul class="benefits-list">
+                    <li>Listing in the Chamber Directory</li>
+                    <li>Free Business Referrals</li>
+                    <li>Ribbon Cutting Ceremonies</li>
+                    <li>Business Before & After Hours and Luncheon Opportunities</li>
+                    <li>Networking and Community Involvement</li>
+                    <li>Promotional Materials and Business Card displayed in the Chamber’s office</li>
+                    <li>Free Promotional posting on the Chamber’s social media platforms</li>
+                    <li>Free use of Chamber Board Room and Resources</li>
+                    <li>Business Appreciation Events</li>
+                    <li>Access to Missouri State chamber Benefits</li>
+                </ul>
+            </div>
+
+            <div class="benefits-block">
+                <h3>Additional Benefits for Elite Levels</h3>
+                
+                <h4 style="color:#D22B2B; font-weight:bold; margin-bottom:0.25rem;">Bronze</h4>
+                <ul class="benefits-list" style="margin-bottom: 1.5rem;">
+                    <li>Highlighted in the member directory</li>
+                    <li>Business name promoted on the monthly video spotlight</li>
+                </ul>
+
+                <h4 style="color:#D22B2B; font-weight:bold; margin-bottom:0.25rem;">Silver</h4>
+                <ul class="benefits-list">
+                    <li>Highlighted in the member directory</li>
+                    <li>Recognition on printed materials through Chamber</li>
+                    <li>Video Spotlights along with monthly acknowledgements on spotlights</li>
+                    <li>Member highlights on the Chamber website</li>
+                    <li>Member mention at all Chamber events</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Membership Investment Dues Section -->
+        <section class="dues-section">
+            <h2>Membership Dues Structure</h2>
+            <div class="dues-grid">
+                
+                <!-- Tier 1 -->
+                <div class="due-card">
+                    <div>
+                        <div class="due-name">Individual / Non-Profit</div>
+                        <div class="due-price">$75 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="due-card">
+                    <div>
+                        <div class="due-name">Regular Membership</div>
+                        <div class="due-price">$250 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="due-card" style="border-top: 3px solid #D22B2B;">
+                    <div>
+                        <div class="due-name">Bronze Elite</div>
+                        <div class="due-price">$500 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 4 -->
+                <div class="due-card" style="border-top: 3px solid #D22B2B;">
+                    <div>
+                        <div class="due-name">Silver Elite</div>
+                        <div class="due-price">$750 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn">Select Level</a>
+                </div>
+
+                <!-- Tier 5 -->
+                <div class="due-card" style="border-top: 3px solid #D22B2B; background: #fafafa;">
+                    <div>
+                        <div class="due-name">Gold Elite</div>
+                        <div class="due-price">$1,000 <span>/ yr</span></div>
+                    </div>
+                    <a href="#apply-form" class="select-tier-btn" style="background:#D22B2B;">Select Level</a>
+                </div>
+
+            </div>
+
+            <!-- Footnotes and Voting Rights -->
+            <div class="dues-footnotes">
+                <p><strong>* Individual/Non-Profit:</strong> Members are allocated 1/2 (half) vote during the Chamber Board Elections and are not permitted to have representation on the Richmond Chamber Board of Directors.</p>
+                <p style="margin-top: 0.5rem;"><strong>** Regular/Elite:</strong> Members are allocated 1 (one) full vote during the Chamber Board Elections and are permitted to have representation on the Richmond Board of Directors.</p>
+            </div>
+        </section>
+
+        <!-- Interactive Form Routing directly to your administrators -->
+        <section class="form-section" id="apply-form">
+            <h2>Membership Application</h2>
+            <p>Complete the profile fields below. Form responses are routed automatically to Chamber leadership to begin integration process.</p>
+            
+            <form action="https://formsubmit.co/director@richmondchamber.org" method="POST">
+                
+                <!-- Carbon-Copy the Activity Director automatically via backend routing -->
+                <input type="hidden" name="_cc" value="activitydirector@richmondchamber.org">
+                <input type="hidden" name="_subject" value="New Chamber Membership Application Form">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="biz-name">Business / Organization Name *</label>
+                        <input type="text" id="biz-name" name="Business Name" required placeholder="As you want it listed">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-person">Primary Contact Person *</label>
+                        <input type="text" id="contact-person" name="Contact Person" required placeholder="First and Last name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="Email Address" required placeholder="name@company.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="Phone Number" required placeholder="(816) 555-0123">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="address">Physical Business Address *</label>
+                        <input type="text" id="address" name="Physical Address" required placeholder="123 Main St, Richmond, MO 64085">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tier-select">Select Membership Level *</label>
+                        <select id="tier-select" name="Selected Membership Level" required>
+                            <option value="" disabled selected>-- Select an Investment Level --</option>
+                            <option value="Individual/Non-Profit">$75 - Individual / Associate / Non-Profit</option>
+                            <option value="Regular Membership">$250 - Regular Membership</option>
+                            <option value="Bronze Membership">$500 - Bronze Elite Level</option>
+                            <option value="Silver Membership">$750 - Silver Elite Level</option>
+                            <option value="Gold Membership">$1,000 - Gold Elite Level</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website or Facebook Page URL</label>
+                        <input type="text" id="website" name="Website URL" placeholder="https://...">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">Short Business Profile Summary</label>
+                        <textarea id="description" name="Business Summary" rows="4" placeholder="Briefly introduce your enterprise offerings or operational focus..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </section>
+
+    </div>
+
+    <!-- Page Footer -->
     <footer>
         <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
-        <p><a href="https://www.facebook.com/richmondmissourichamberofcommerce" target="_blank">Connect with us on Facebook</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #777;">Powered by GitHub Pages</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('mobileMenuBtn'), nav = document.getElementById('mobileNav');
-            if(btn && nav) btn.addEventListener('click', () => { btn.classList.toggle('open'); nav.classList.toggle('open'); });
-        });
-    </script>
 </body>
 </html>
