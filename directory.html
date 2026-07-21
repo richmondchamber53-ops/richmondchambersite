@@ -5,62 +5,327 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Directory | Richmond Area Chamber of Commerce</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { color: #333; line-height: 1.6; background-color: #f4f6f9; }
-        header { background-color: #ffffff; border-bottom: 4px solid #D22B2B; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1.5rem; }
-        .logo img { height: 75px; width: auto; display: block; }
-        .desktop-nav ul { display: flex; list-style: none; gap: 1.75rem; }
-        .desktop-nav ul li a { text-decoration: none; color: #444; font-weight: 600; font-size: 1.05rem; transition: color 0.3s; padding: 0.5rem 0; }
-        .desktop-nav ul li a:hover, .desktop-nav ul li a.active { color: #D22B2B; }
-        .mobile-menu-btn { display: none; flex-direction: column; justify-content: space-around; width: 30px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
-        .mobile-menu-btn span { width: 100%; height: 3px; background-color: #1A1A1A; border-radius: 2px; transition: all 0.3s ease; }
-        .mobile-nav { display: none; background-color: #ffffff; border-top: 1px solid #e0e0e0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; }
-        .mobile-nav ul { list-style: none; padding: 0.5rem 0; }
-        .mobile-nav ul li a { display: block; padding: 0.85rem 1.5rem; color: #444; text-decoration: none; font-weight: 600; font-size: 1.05rem; border-bottom: 1px solid #f4f6f9; text-align: center; }
-        .mobile-nav ul li a:hover, .mobile-nav ul li a.active { color: #D22B2B; background-color: #fff2f2; }
-        @media (max-width: 768px) {
-            .logo img { height: 60px; } .desktop-nav { display: none; } .mobile-menu-btn { display: flex; } .mobile-nav.open { display: block; }
-            .mobile-menu-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
-            .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        /* Modern Reset & Corporate Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        footer { background-color: #1A1A1A; color: #d1d1d1; text-align: center; padding: 2.5rem 1.5rem; margin-top: 5rem; border-top: 4px solid #D22B2B; }
-        footer a { color: white; font-weight: bold; text-decoration: none; }
 
-        /* Directory Styles */
-        .main-container { max-width: 1240px; margin: 2.5rem auto; padding: 0 1.5rem; }
-        .page-header { text-align: center; margin-bottom: 2rem; }
-        .page-header h1 { font-size: 2.4rem; color: #1A1A1A; margin-bottom: 0.5rem; }
-        .directory-controls { background: #ffffff; border-radius: 12px; padding: 1.75rem; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 2rem; border-left: 6px solid #D22B2B; }
-        .search-input { width: 100%; padding: 0.85rem 1.15rem; font-size: 1rem; border: 2px solid #e0e0e0; border-radius: 8px; outline: none; background-color: #fafafa; margin-bottom: 1.25rem; }
-        .search-input:focus { border-color: #D22B2B; background-color: #ffffff; }
-        .filter-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-        .filter-btn { background-color: #f0f2f5; color: #555; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
-        .filter-btn.active { background-color: #D22B2B; color: #ffffff; }
-        .results-count { font-size: 0.9rem; color: #777; font-weight: 600; }
-        .directory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; min-height: 400px; }
-        .business-card { background-color: #ffffff; border-radius: 10px; padding: 1.25rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid #eef0f3; display: flex; flex-direction: column; justify-content: space-between; }
-        .business-category { display: inline-block; background-color: #fff2f2; color: #D22B2B; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; }
-        .business-name { font-size: 1.15rem; color: #1A1A1A; margin-bottom: 0.5rem; }
-        .business-info { font-size: 0.88rem; color: #555; margin-bottom: 1rem; }
-        .business-actions { display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid #f0f0f0; }
-        .card-btn { flex: 1; text-align: center; text-decoration: none; padding: 0.45rem 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
-        .btn-call { background-color: #f0f2f5; color: #333; }
-        .btn-website { background-color: #D22B2B; color: #ffffff; }
-        .no-results { display: none; grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; background: #ffffff; border-radius: 12px; color: #666; }
-        .pagination-container { display: flex; justify-content: center; align-items: center; gap: 0.35rem; margin-top: 2.5rem; flex-wrap: wrap; }
-        .page-btn { background-color: #ffffff; color: #444; border: 1px solid #e0e0e0; padding: 0.45rem 0.8rem; border-radius: 6px; font-weight: 600; font-size: 0.88rem; cursor: pointer; }
-        .page-btn.active { background-color: #D22B2B; color: #ffffff; border-color: #D22B2B; }
-        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f6f9;
+        }
+
+        /* Header & Navigation Links */
+        header {
+            background-color: #ffffff;
+            border-bottom: 4px solid #D22B2B; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo img {
+            height: 85px; 
+            width: auto;  
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.75rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #D22B2B; 
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1240px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 1.15rem;
+        }
+
+        /* Interactive Search & Filter Control Panel */
+        .directory-controls {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            border-left: 6px solid #D22B2B;
+        }
+
+        .search-box-container {
+            margin-bottom: 1.25rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            font-size: 1.05rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: #fafafa;
+        }
+
+        .search-input:focus {
+            border-color: #D22B2B;
+            box-shadow: 0 0 0 3px rgba(210, 43, 43, 0.1);
+            background-color: #ffffff;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-btn {
+            background-color: #f0f2f5;
+            color: #555;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .filter-btn:hover {
+            background-color: #e2e6ea;
+            color: #1A1A1A;
+        }
+
+        .filter-btn.active {
+            background-color: #D22B2B;
+            color: #ffffff;
+        }
+
+        .results-count {
+            font-size: 0.9rem;
+            color: #777;
+            font-weight: 600;
+        }
+
+        /* Business Directory Grid Layout */
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .business-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid #eef0f3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .business-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .business-category {
+            display: inline-block;
+            background-color: #fff2f2;
+            color: #D22B2B;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            align-self: flex-start;
+            letter-spacing: 0.5px;
+        }
+
+        .business-name {
+            font-size: 1.3rem;
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+        }
+
+        .business-info {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.25rem;
+        }
+
+        .business-info p {
+            margin-bottom: 0.35rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .business-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .card-btn {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: background-color 0.2s;
+        }
+
+        .btn-call {
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .btn-call:hover {
+            background-color: #e2e6ea;
+        }
+
+        .btn-website {
+            background-color: #D22B2B;
+            color: #ffffff;
+        }
+
+        .btn-website:hover {
+            background-color: #b12020;
+        }
+
+        /* Empty State */
+        .no-results {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #ffffff;
+            border-radius: 12px;
+            color: #666;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #1A1A1A; 
+            color: #d1d1d1;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            font-size: 0.95rem;
+            border-top: 4px solid #D22B2B;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #D22B2B;
+        }
+
+        .github-powered {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.25rem 1rem;
+            }
+            .logo img {
+                height: 70px; 
+                margin-bottom: 1.25rem;
+            }
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+            .main-container {
+                padding: 0 1rem;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header & Navigation Menu Links -->
     <header>
         <div class="nav-container">
-            <div class="logo"><a href="index.html"><img src="chamberlogo.png" alt="Richmond Chamber Logo"></a></div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-            <nav class="desktop-nav">
+            <div class="logo">
+                <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
+            </div>
+            <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="directory.html" class="active">Business Directory</a></li>
@@ -70,123 +335,205 @@
                 </ul>
             </nav>
         </div>
-        <nav class="mobile-nav" id="mobileNav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="directory.html" class="active">Business Directory</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="join.html">Join Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main class="main-container">
+        
         <div class="page-header">
             <h1>Business Directory</h1>
-            <p>Search over 300 Chamber members and local businesses across Richmond & Ray County.</p>
+            <p>Find local Chamber members, services, and local businesses in Richmond & Ray County.</p>
         </div>
 
+        <!-- Interactive Search & Filter Controls -->
         <section class="directory-controls">
-            <input type="text" id="searchInput" class="search-input" placeholder="Search 300+ businesses by name, category, or keyword..." autocomplete="off">
+            <div class="search-box-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search by business name, keyword, or address..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <!-- Quick Filter Buttons -->
             <div class="filter-buttons">
                 <button class="filter-btn active" data-category="all">All Categories</button>
                 <button class="filter-btn" data-category="financial">Financial & Legal</button>
-                <button class="filter-btn" data-category="healthcare">Healthcare & Medical</button>
+                <button class="filter-btn" data-category="healthcare">Healthcare & Wellness</button>
                 <button class="filter-btn" data-category="agriculture">Agriculture & Industry</button>
                 <button class="filter-btn" data-category="dining">Dining & Retail</button>
                 <button class="filter-btn" data-category="services">Local Services</button>
             </div>
-            <div class="results-count" id="resultsCount">Loading directory listings...</div>
+
+            <div class="results-count" id="resultsCount">Showing all businesses</div>
         </section>
 
+        <!-- Directory Roster Grid -->
         <section class="directory-grid" id="directoryGrid">
+            
+            <!-- Business Card 1 -->
+            <article class="business-card" data-category="financial" data-keywords="westbrook accounting cpa tax financial legal audit">
+                <div>
+                    <span class="business-category">Financial & Legal</span>
+                    <h3 class="business-name">Westbrook & Co., P.C.</h3>
+                    <div class="business-info">
+                        <p>📍 102 N Thornton St, Richmond, MO</p>
+                        <p>📞 (816) 776-3584</p>
+                        <p>💼 Certified Public Accountants & Business Consultants</p>
+                    </div>
+                </div>
+                <div class="business-actions">
+                    <a href="tel:8167763584" class="card-btn btn-call">Call</a>
+                    <a href="https://westbrookcpas.com" target="_blank" class="card-btn btn-website">Website</a>
+                </div>
+            </article>
+
+            <!-- Business Card 2 -->
+            <article class="business-card" data-category="healthcare" data-keywords="shirkey health care nursing rehabilitation medical wellness center senior">
+                <div>
+                    <span class="business-category">Healthcare & Wellness</span>
+                    <h3 class="business-name">Shirkey Health Services</h3>
+                    <div class="business-info">
+                        <p>📍 804 W Main St, Richmond, MO</p>
+                        <p>📞 (816) 776-5403</p>
+                        <p>💼 Skilled Nursing, Rehabilitation & Senior Care</p>
+                    </div>
+                </div>
+                <div class="business-actions">
+                    <a href="tel:8167765403" class="card-btn btn-call">Call</a>
+                    <a href="http://shirkeyhealth.com" target="_blank" class="card-btn btn-website">Website</a>
+                </div>
+            </article>
+
+            <!-- Business Card 3 -->
+            <article class="business-card" data-category="agriculture" data-keywords="ray carroll grain growers farm agriculture feed supply energy fertilizer">
+                <div>
+                    <span class="business-category">Agriculture & Industry</span>
+                    <h3 class="business-name">Ray-Carroll County Grain Growers</h3>
+                    <div class="business-info">
+                        <p>📍 808 W Lexington St, Richmond, MO</p>
+                        <p>📞 (816) 776-2291</p>
+                        <p>💼 Agricultural Cooperative, Grain & Farm Supplies</p>
+                    </div>
+                </div>
+                <div class="business-actions">
+                    <a href="tel:8167762291" class="card-btn btn-call">Call</a>
+                    <a href="http://ray-carroll.com" target="_blank" class="card-btn btn-website">Website</a>
+                </div>
+            </article>
+
+            <!-- Business Card 4 -->
+            <article class="business-card" data-category="services" data-keywords="ray county courthouse city government public local services administration">
+                <div>
+                    <span class="business-category">Local Services</span>
+                    <h3 class="business-name">Ray County Courthouse</h3>
+                    <div class="business-info">
+                        <p>📍 100 W Main St, Richmond, MO</p>
+                        <p>📞 (816) 776-4500</p>
+                        <p>💼 County Government & Public Administration</p>
+                    </div>
+                </div>
+                <div class="business-actions">
+                    <a href="tel:8167764500" class="card-btn btn-call">Call</a>
+                    <a href="#" class="card-btn btn-website">Details</a>
+                </div>
+            </article>
+
+            <!-- Business Card 5 -->
+            <article class="business-card" data-category="dining" data-keywords="main street cafe restaurant dining food coffee bakery lunch downtown">
+                <div>
+                    <span class="business-category">Dining & Retail</span>
+                    <h3 class="business-name">Richmond Main Street Diner</h3>
+                    <div class="business-info">
+                        <p>📍 112 E Main St, Richmond, MO</p>
+                        <p>📞 (816) 776-0000</p>
+                        <p>💼 Home-style Breakfast, Lunch & Coffee</p>
+                    </div>
+                </div>
+                <div class="business-actions">
+                    <a href="tel:8167760000" class="card-btn btn-call">Call</a>
+                    <a href="#" class="card-btn btn-website">Menu</a>
+                </div>
+            </article>
+
+            <!-- Empty State Display -->
             <div class="no-results" id="noResults">
                 <h3>No Matching Businesses Found</h3>
-                <p>Try adjusting your search terms.</p>
+                <p>Try adjusting your search terms or choosing "All Categories".</p>
             </div>
+
         </section>
 
-        <div class="pagination-container" id="paginationContainer"></div>
     </main>
 
+    <!-- Page Footer Links -->
     <footer>
         <p>&copy; 2026 Richmond Area Chamber of Commerce. Richmond, Missouri. All Rights Reserved.</p>
         <p><a href="https://www.facebook.com/richmondmissourichamberofcommerce" target="_blank">Connect with us on Facebook</a></p>
+        <p class="github-powered">Powered by GitHub Pages</p>
     </footer>
 
+    <!-- Interactive Live Search Script -->
     <script>
-        // Menu Toggle
         document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('mobileMenuBtn'), nav = document.getElementById('mobileNav');
-            if(btn && nav) btn.addEventListener('click', () => { btn.classList.toggle('open'); nav.classList.toggle('open'); });
-        });
+            const searchInput = document.getElementById('searchInput');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.business-card');
+            const noResults = document.getElementById('noResults');
+            const resultsCount = document.getElementById('resultsCount');
 
-        // Directory Script
-        const categories = [{id:'financial',name:'Financial & Legal'},{id:'healthcare',name:'Healthcare & Medical'},{id:'agriculture',name:'Agriculture & Industry'},{id:'dining',name:'Dining & Retail'},{id:'services',name:'Local Services'}];
-        const businessTypes = [{cat:'financial',title:'Accounting',desc:'Financial planning, audit, & tax preparation'},{cat:'financial',title:'Bank',desc:'Commercial & personal banking solutions'},{cat:'healthcare',title:'Clinic',desc:'Family care & medical consultations'},{cat:'agriculture',title:'Grain & Supply',desc:'Agricultural feeds, seed, & fertilizers'},{cat:'dining',title:'Diner',desc:'Home-cooked specials'},{cat:'services',title:'Auto Repair',desc:'Diagnostics and maintenance'}];
-        const streetNames = ['Main St', 'Thornton St', 'Lexington St', 'College St', 'Franklin St'];
+            let currentCategory = 'all';
 
-        const allBusinesses = [
-            { id: 1, name: 'Westbrook & Co., P.C.', cat: 'financial', catName: 'Financial & Legal', phone: '(816) 776-3584', address: '102 N Thornton St', desc: 'Certified Public Accountants & Business Consultants', web: 'https://westbrookcpas.com' },
-            { id: 2, name: 'Shirkey Health Services', cat: 'healthcare', catName: 'Healthcare & Medical', phone: '(816) 776-5403', address: '804 W Main St', desc: 'Skilled Nursing, Rehabilitation & Senior Care', web: 'http://shirkeyhealth.com' },
-            { id: 3, name: 'Ray-Carroll County Grain Growers', cat: 'agriculture', catName: 'Agriculture & Industry', phone: '(816) 776-2291', address: '808 W Lexington St', desc: 'Agricultural Cooperative, Grain & Farm Supplies', web: 'http://ray-carroll.com' }
-        ];
+            function filterDirectory() {
+                const query = searchInput.value.toLowerCase().trim();
+                let visibleCount = 0;
 
-        for (let i = 4; i <= 300; i++) {
-            const type = businessTypes[(i % businessTypes.length)];
-            const catObj = categories.find(c => c.id === type.cat);
-            allBusinesses.push({
-                id: i, name: `Richmond ${type.title} ${i}`, cat: type.cat, catName: catObj.name,
-                phone: `(816) 776-${1000 + i}`, address: `${(100+(i*3))%990+10} ${streetNames[(i%streetNames.length)]}`,
-                desc: type.desc, web: '#'
-            });
-        }
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const keywords = card.getAttribute('data-keywords').toLowerCase();
+                    const textContent = card.innerText.toLowerCase();
 
-        const ITEMS_PER_PAGE = 18; let currentPage = 1; let currentCategory = 'all'; let searchQuery = ''; let filteredList = [...allBusinesses];
-        const grid = document.getElementById('directoryGrid'), noRes = document.getElementById('noResults'), count = document.getElementById('resultsCount'), pageCont = document.getElementById('paginationContainer');
+                    const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+                    const matchesSearch = textContent.includes(query) || keywords.includes(query);
 
-        function renderDir() {
-            filteredList = allBusinesses.filter(b => {
-                const matchCat = (currentCategory === 'all' || b.cat === currentCategory);
-                const q = searchQuery.toLowerCase();
-                return matchCat && (b.name.toLowerCase().includes(q) || b.desc.toLowerCase().includes(q) || b.address.toLowerCase().includes(q) || b.catName.toLowerCase().includes(q));
-            });
-            filteredList.sort((a,b) => a.name.localeCompare(b.name));
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
 
-            const total = filteredList.length, totalPg = Math.ceil(total / ITEMS_PER_PAGE);
-            if (currentPage > totalPg) currentPage = Math.max(1, totalPg);
-            grid.innerHTML = '';
+                // Update counter text
+                if (visibleCount === cards.length) {
+                    resultsCount.textContent = 'Showing all businesses';
+                } else {
+                    resultsCount.textContent = `Showing ${visibleCount} of ${cards.length} businesses`;
+                }
 
-            if (total === 0) { noRes.style.display = 'block'; count.textContent = 'Showing 0 businesses'; pageCont.innerHTML = ''; return; }
-            noRes.style.display = 'none';
-
-            const start = (currentPage - 1) * ITEMS_PER_PAGE, end = Math.min(start + ITEMS_PER_PAGE, total);
-            filteredList.slice(start, end).forEach(b => {
-                grid.innerHTML += `<article class="business-card"><div><span class="business-category">${b.catName}</span><h3 class="business-name">${b.name}</h3><div class="business-info"><p>📍 ${b.address}, Richmond, MO</p><p>📞 ${b.phone}</p><p>💼 ${b.desc}</p></div></div><div class="business-actions"><a href="tel:${b.phone.replace(/[^0-9]/g,'')}" class="card-btn btn-call">Call</a><a href="${b.web}" ${b.web !== '#' ? 'target="_blank"' : ''} class="card-btn btn-website">Website</a></div></article>`;
-            });
-            count.textContent = `Showing ${start + 1}-${end} of ${total} businesses`;
-            renderPage(totalPg);
-        }
-
-        function renderPage(totalPg) {
-            pageCont.innerHTML = ''; if (totalPg <= 1) return;
-            const prev = document.createElement('button'); prev.className = 'page-btn'; prev.innerHTML = '&laquo; Prev'; prev.disabled = (currentPage === 1);
-            prev.onclick = () => { if(currentPage>1){currentPage--; renderDir(); window.scrollTo({top:250, behavior:'smooth'});} }; pageCont.appendChild(prev);
-            
-            let st = Math.max(1, currentPage - 2), en = Math.min(totalPg, st + 4);
-            if (en - st < 4) st = Math.max(1, en - 4);
-            for (let i = st; i <= en; i++) {
-                const btn = document.createElement('button'); btn.className = `page-btn ${i===currentPage?'active':''}`; btn.textContent = i;
-                btn.onclick = () => { currentPage = i; renderDir(); window.scrollTo({top:250, behavior:'smooth'}); }; pageCont.appendChild(btn);
+                // Handle empty state
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
             }
-            const next = document.createElement('button'); next.className = 'page-btn'; next.innerHTML = 'Next &raquo;'; next.disabled = (currentPage === totalPg);
-            next.onclick = () => { if(currentPage<totalPg){currentPage++; renderDir(); window.scrollTo({top:250, behavior:'smooth'});} }; pageCont.appendChild(next);
-        }
 
-        document.getElementById('searchInput').addEventListener('input', e => { searchQuery = e.target.value; currentPage = 1; renderDir(); });
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentCategory = btn.dataset.category; currentPage = 1; renderDir(); }));
-        renderDir();
+            // Live Search Input Event
+            searchInput.addEventListener('input', filterDirectory);
+
+            // Category Filter Button Clicks
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    currentCategory = button.getAttribute('data-category');
+                    filterDirectory();
+                });
+            });
+        });
     </script>
 </body>
 </html>
