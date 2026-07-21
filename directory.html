@@ -432,9 +432,8 @@
         <p class="github-powered">Powered by GitHub Pages</p>
     </footer>
 
-    <!-- Interactive Search, Filter & 20-Per-Page Engine -->
+    <!-- Interactive Search, Filter & 18-Per-Page Engine -->
     <script>
-        // Sample Category & Name Generators to build 300 distinct businesses
         const categories = [
             { id: 'financial', name: 'Financial & Legal' },
             { id: 'healthcare', name: 'Healthcare & Medical' },
@@ -464,14 +463,14 @@
         // Generate 300 business entries dynamically
         const allBusinesses = [];
         
-        // 1. Core featured partners
+        // Featured corporate partners
         allBusinesses.push(
             { id: 1, name: 'Westbrook & Co., P.C.', cat: 'financial', catName: 'Financial & Legal', phone: '(816) 776-3584', address: '102 N Thornton St', desc: 'Certified Public Accountants & Business Consultants', web: 'https://westbrookcpas.com' },
             { id: 2, name: 'Shirkey Health Services', cat: 'healthcare', catName: 'Healthcare & Medical', phone: '(816) 776-5403', address: '804 W Main St', desc: 'Skilled Nursing, Rehabilitation & Senior Care', web: 'http://shirkeyhealth.com' },
             { id: 3, name: 'Ray-Carroll County Grain Growers', cat: 'agriculture', catName: 'Agriculture & Industry', phone: '(816) 776-2291', address: '808 W Lexington St', desc: 'Agricultural Cooperative, Grain & Farm Supplies', web: 'http://ray-carroll.com' }
         );
 
-        // 2. Generate remaining up to 300 entries
+        // Generate up to 300 entries
         for (let i = 4; i <= 300; i++) {
             const type = businessTypes[(i % businessTypes.length)];
             const catObj = categories.find(c => c.id === type.cat);
@@ -490,14 +489,14 @@
             });
         }
 
-        // Pagination & Filtering Variables
-        const ITEMS_PER_PAGE = 20;
+        // Configuration: 18 items per page for clean row layouts
+        const ITEMS_PER_PAGE = 18;
         let currentPage = 1;
         let currentCategory = 'all';
         let searchQuery = '';
         let filteredList = [...allBusinesses];
 
-        // DOM Element Handles
+        // DOM Elements
         const directoryGrid = document.getElementById('directoryGrid');
         const noResults = document.getElementById('noResults');
         const searchInput = document.getElementById('searchInput');
@@ -505,9 +504,7 @@
         const resultsCount = document.getElementById('resultsCount');
         const paginationContainer = document.getElementById('paginationContainer');
 
-        // Render Cards for the Current Page
         function renderDirectory() {
-            // Apply filtering logic
             filteredList = allBusinesses.filter(b => {
                 const matchesCat = (currentCategory === 'all' || b.cat === currentCategory);
                 const query = searchQuery.toLowerCase();
@@ -521,10 +518,8 @@
             const totalResults = filteredList.length;
             const totalPages = Math.ceil(totalResults / ITEMS_PER_PAGE);
 
-            // Bounds protection for page numbers
             if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
 
-            // Clear previous cards
             directoryGrid.innerHTML = '';
 
             if (totalResults === 0) {
@@ -536,12 +531,11 @@
 
             noResults.style.display = 'none';
 
-            // Calculate slicing parameters for 20 per page
+            // Calculate slicing parameters for 18 per page
             const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
             const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalResults);
             const pageItems = filteredList.slice(startIndex, endIndex);
 
-            // Render visible cards
             pageItems.forEach(b => {
                 const card = document.createElement('article');
                 card.className = 'business-card';
@@ -563,19 +557,15 @@
                 directoryGrid.appendChild(card);
             });
 
-            // Update result counter text
             resultsCount.textContent = `Showing ${startIndex + 1}-${endIndex} of ${totalResults} businesses`;
 
-            // Build Pagination Buttons
             renderPagination(totalPages);
         }
 
-        // Render Pagination Control Toolbar
         function renderPagination(totalPages) {
             paginationContainer.innerHTML = '';
             if (totalPages <= 1) return;
 
-            // Previous Button
             const prevBtn = document.createElement('button');
             prevBtn.className = 'page-btn';
             prevBtn.innerHTML = '&laquo; Prev';
@@ -589,7 +579,6 @@
             });
             paginationContainer.appendChild(prevBtn);
 
-            // Calculate visible page range around current page
             let startPage = Math.max(1, currentPage - 2);
             let endPage = Math.min(totalPages, startPage + 4);
             if (endPage - startPage < 4) {
@@ -608,7 +597,6 @@
                 paginationContainer.appendChild(pageBtn);
             }
 
-            // Next Button
             const nextBtn = document.createElement('button');
             nextBtn.className = 'page-btn';
             nextBtn.innerHTML = 'Next &raquo;';
@@ -623,10 +611,9 @@
             paginationContainer.appendChild(nextBtn);
         }
 
-        // Event Listeners for Live Search & Category Filtering
         searchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value;
-            currentPage = 1; // Reset to first page when search changes
+            currentPage = 1;
             renderDirectory();
         });
 
@@ -636,12 +623,11 @@
                 button.classList.add('active');
 
                 currentCategory = button.getAttribute('data-category');
-                currentPage = 1; // Reset to first page when category changes
+                currentPage = 1;
                 renderDirectory();
             });
         });
 
-        // Initial Load Call
         document.addEventListener('DOMContentLoaded', renderDirectory);
     </script>
 </body>
