@@ -335,23 +335,43 @@
 </head>
 <body>
 
-    <!-- Header & Navigation Menu Links -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="directory.html">Business Directory</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="join.html">Join Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+   <!-- Header Navigation with Mobile Support -->
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html"><img src="chamberlogo.png" alt="Richmond Area Chamber of Commerce Logo"></a>
         </div>
-    </header>
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html"class="active">Home</a></li>
+                <li><a href="directory.html">Business Directory</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Mobile Dropdown Navigation Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html"class="active">Home</a></li>
+            <li><a href="directory.html">Business Directory</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="join.html">Join Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
     <!-- Hero Splash Box with Side-By-Side Button Triggers & Landmark Image Graphic -->
     <section class="hero-section">
@@ -532,6 +552,16 @@
         <p><a href="https://www.facebook.com/richmondmissourichamberofcommerce" target="_blank">Connect with us on Facebook</a></p>
         <p class="github-powered">Powered by GitHub Pages</p>
     </footer>
+<script>
+  // Mobile Menu Toggle Script
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
 </body>
 </html>
